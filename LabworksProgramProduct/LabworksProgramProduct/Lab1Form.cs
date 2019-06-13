@@ -87,7 +87,7 @@ namespace LabworksProgramProduct
             VerticalScroll.Value = 0;
             VerticalScroll.Value = 0;
             VerticalScroll.Value = 0;
-            leftPanel.Location = new Point(0, 0);
+            HandleScroll();
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -107,6 +107,49 @@ namespace LabworksProgramProduct
             
 
         }
+        void GoToPage(int pageNum)
+        {
+            int curPage = 1;
+            VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
+            HandleScroll();
+        }
+        private int GetCurPage()
+        {
+            int cnt = 1;
+            foreach(var page in Pages)
+            {
+                if (page.panel.Top + page.panel.Height >= VerticalScroll.Value)
+                {
+                    return cnt;
+                }
+                cnt++;
+            }
+            throw new NotImplementedException();
+        }
+        private void TextBoxPages_TextChanged(object sender, EventArgs e)
+        {
+            if (!textBoxPages.Focused)
+            {
+                return;
+            }
+            try
+            {
+                int curPage = 1;
+                if (textBoxPages.Text == "")
+                {
+                    return;
+                }
+                else
+                {
+                    curPage = int.Parse(textBoxPages.Text);
+                    GoToPage(curPage);
+                }
+            }
+            catch
+            {
+                textBoxPages.Text = GetCurPage().ToString();
+            }
+        }
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -117,13 +160,18 @@ namespace LabworksProgramProduct
         {
             foreach (var page in Pages)
             {
-                if (page.panel.Top > Height + VerticalScroll.Value)
+                if (page.panel.Top > VerticalScroll.Value)
                 {
                     VerticalScroll.Value = page.panel.Top - Pages.First().panel.Top;
-                    leftPanel.Location = new Point(0, 0);
+                    HandleScroll();
                     break;
                 }
             }
+        }
+        private void HandleScroll()
+        {
+            leftPanel.Location = new Point(0, 0);
+            textBoxPages.Text = GetCurPage().ToString();
         }
         private void PrevPageButton_Click(object sender, EventArgs e)
         {
@@ -132,7 +180,7 @@ namespace LabworksProgramProduct
                 if (Pages[i].panel.Top < VerticalScroll.Value)
                 {
                     VerticalScroll.Value = Pages[i].panel.Top;
-                    leftPanel.Location = new Point(0, 0);
+                    HandleScroll();
                     break;
                 }
             }
@@ -145,12 +193,12 @@ namespace LabworksProgramProduct
 
         private void Lab1Form_Scroll(object sender, ScrollEventArgs e)
         {
-            leftPanel.Location = new Point(0, 0);
+            HandleScroll();
         }
 
         private void Lab1Form_MouseWheel1(object sender, MouseEventArgs e)
         {
-            leftPanel.Location = new Point(0, 0);
+            HandleScroll();
         }
         
     }

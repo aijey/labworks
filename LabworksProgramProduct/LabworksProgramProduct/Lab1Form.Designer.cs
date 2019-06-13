@@ -50,8 +50,10 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(32, 14);
+            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button1.Location = new System.Drawing.Point(50, 18);
+            this.button1.MaximumSize = new System.Drawing.Size(461, 54);
+            this.button1.MinimumSize = new System.Drawing.Size(0, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(461, 54);
             this.button1.TabIndex = 10;
@@ -64,7 +66,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(50, 5);
+            this.button2.Location = new System.Drawing.Point(50, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(461, 54);
             this.button2.TabIndex = 11;
@@ -103,7 +105,7 @@
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(50, 170);
+            this.button5.Location = new System.Drawing.Point(50, 183);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(461, 54);
             this.button5.TabIndex = 14;
@@ -116,7 +118,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(50, 60);
+            this.button3.Location = new System.Drawing.Point(50, 63);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(461, 54);
             this.button3.TabIndex = 12;
@@ -155,7 +157,7 @@
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(50, 115);
+            this.button4.Location = new System.Drawing.Point(50, 123);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(461, 54);
             this.button4.TabIndex = 13;
@@ -170,7 +172,7 @@
             this.panel1.Location = new System.Drawing.Point(124, 138);
             this.panel1.MinimumSize = new System.Drawing.Size(50, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 83);
+            this.panel1.Size = new System.Drawing.Size(551, 83);
             this.panel1.TabIndex = 29;
             // 
             // panel2
@@ -183,7 +185,7 @@
             this.panel2.Location = new System.Drawing.Point(124, 227);
             this.panel2.MinimumSize = new System.Drawing.Size(50, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(533, 255);
+            this.panel2.Size = new System.Drawing.Size(551, 255);
             this.panel2.TabIndex = 30;
             // 
             // panel3
@@ -217,7 +219,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.Resize += new System.EventHandler(this.Lab1Form_Resize);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);

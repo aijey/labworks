@@ -31,8 +31,14 @@ namespace LabworksProgramProduct
             mainPanel = new Panel();
             mainPanel.BackColor =  System.Drawing.SystemColors.Control;
             Controls.Add(mainPanel);
-            
-
+            // label
+            pagesLabel = new Label();
+            pagesLabel.Text = "Сторінка: ";
+            leftPanel.Controls.Add(pagesLabel);
+            // textBox
+            textBoxPages = new TextBox();
+            leftPanel.Controls.Add(textBoxPages);
+            textBoxPages.TextChanged += TextBoxPages_TextChanged;
 
             leftPanel.Width = 250;
             leftPanel.Height = Height - 100;
@@ -42,7 +48,7 @@ namespace LabworksProgramProduct
             mainPanel.Height = Pages.Last().panel.Top + Pages.Last().panel.Height;
         }
 
-
+        
         private void LeftPanel_Scroll(object sender, ScrollEventArgs e)
         {
             leftPanel.Location = new System.Drawing.Point(0, 0);
@@ -64,6 +70,8 @@ namespace LabworksProgramProduct
                     {
                         leftPanelButtons[i].Left = leftPanelButtons[i - 1].Left;
                         leftPanelButtons[i].Top = leftPanelButtons[i - 1].Top + leftPanelButtons[i - 1].Height + 10;
+                        pagesLabel.Location = new System.Drawing.Point(leftPanelButtons[i].Left, leftPanelButtons[i].Top + leftPanelButtons[i].Height + 10);
+                        textBoxPages.Location = new System.Drawing.Point(pagesLabel.Left + pagesLabel.Width, leftPanelButtons[i].Top + leftPanelButtons[i].Height + 10);
                     }
                     else
                     {
@@ -73,16 +81,26 @@ namespace LabworksProgramProduct
                 }
                 else
                 {
-                    leftPanelButtons[i].Width = 200;
-                    leftPanelButtons[i].Height = 50;
-                    if (i == 0)
+                    if (i == 3)
                     {
-                        leftPanelButtons[i].Location = new System.Drawing.Point(10, 10);
+                        leftPanelButtons[i].Width = 200;
+                        leftPanelButtons[i].Height = 50;
+                        leftPanelButtons[i].Left = leftPanelButtons[0].Left;
+                        leftPanelButtons[i].Top = pagesLabel.Top + pagesLabel.Height + 10;
                     }
                     else
                     {
-                        leftPanelButtons[i].Left = leftPanelButtons[0].Left;
-                        leftPanelButtons[i].Top = leftPanelButtons[i - 1].Top + leftPanelButtons[i - 1].Height + 10;
+                        leftPanelButtons[i].Width = 200;
+                        leftPanelButtons[i].Height = 50;
+                        if (i == 0)
+                        {
+                            leftPanelButtons[i].Location = new System.Drawing.Point(10, 10);
+                        }
+                        else
+                        {
+                            leftPanelButtons[i].Left = leftPanelButtons[0].Left;
+                            leftPanelButtons[i].Top = leftPanelButtons[i - 1].Top + leftPanelButtons[i - 1].Height + 10;
+                        }
                     }
                 }
             }
@@ -125,7 +143,7 @@ namespace LabworksProgramProduct
         void ResizePanel(Panel panel, int index)
         {
             panel.Width = mainPanel.Width;
-            if (index <= 3)
+            if (index <= 3 || index >= 5 && index <= 6)
             {
                 var img = Pages[index - 1].PictureBoxes[0];
                 ResizePictureBox(ref img, ref panel, index);
@@ -136,6 +154,7 @@ namespace LabworksProgramProduct
                 var img = Pages[index - 1].PictureBoxes[0];
                 ResizePictureBox(ref img, ref panel, index, 1);
                 panel1.Location = new System.Drawing.Point(0, img.Top + img.Height);
+                panel1.Width = mainPanel.Width;
                 img = Pages[index - 1].PictureBoxes[1];
                 ResizePictureBox(ref img, ref panel, index, 2);
                 panel.Height = img.Top + img.Height;
@@ -145,6 +164,7 @@ namespace LabworksProgramProduct
                 var img = Pages[index - 1].PictureBoxes[0];
                 ResizePictureBox(ref img, ref panel, index, 1);
                 panel2.Location = new System.Drawing.Point(0, img.Top + img.Height);
+                panel2.Width = mainPanel.Width;
                 img = Pages[index - 1].PictureBoxes[1];
                 ResizePictureBox(ref img, ref panel, index, 2);
                 panel.Height = img.Top + img.Height;
@@ -242,7 +262,7 @@ namespace LabworksProgramProduct
                 }
             }
             img.SizeMode = PictureBoxSizeMode.AutoSize;
-            double vidn = (double)img.Height / img.Width;
+            double vidn = (double)img.Height / (double)img.Width;
             img.SizeMode = PictureBoxSizeMode.Zoom;
             img.Width = panel.Width;
             img.Height = (int)(img.Width * vidn);
@@ -329,5 +349,7 @@ namespace LabworksProgramProduct
         private Panel mainPanel;
         private Button[] leftPanelButtons = new Button[4];
         private List<Page> Pages = new List<Page>();
+        private Label pagesLabel;
+        private TextBox textBoxPages;
     }
 }
