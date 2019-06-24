@@ -65,6 +65,12 @@
     <Compile Include="AskingFormDataSource.Designer.cs">
       <DependentUpon>AskingFormDataSource.cs</DependentUpon>
     </Compile>
+    <Compile Include="AskingFormDataSource2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AskingFormDataSource2.Designer.cs">
+      <DependentUpon>AskingFormDataSource2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,12 @@
     <Compile Include="InstructionForm.Designer.cs">
       <DependentUpon>InstructionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntervalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntervalForm.Designer.cs">
+      <DependentUpon>IntervalForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab1Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +155,12 @@
     <Compile Include="Page.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaticForm.Designer.cs">
+      <DependentUpon>StaticForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tasks.cs" />
     <Compile Include="TasksForm1.cs">
       <SubType>Form</SubType>
@@ -164,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AskingFormDataSource.resx">
       <DependentUpon>AskingFormDataSource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AskingFormDataSource2.resx">
+      <DependentUpon>AskingFormDataSource2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChartForm1.resx">
       <DependentUpon>ChartForm1.cs</DependentUpon>
@@ -189,6 +210,9 @@
     <EmbeddedResource Include="InstructionForm.resx">
       <DependentUpon>InstructionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IntervalForm.resx">
+      <DependentUpon>IntervalForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab1Form.resx">
       <DependentUpon>Lab1Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +235,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StaticForm.resx">
+      <DependentUpon>StaticForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TasksForm1.resx">
       <DependentUpon>TasksForm1.cs</DependentUpon>
     </EmbeddedResource>

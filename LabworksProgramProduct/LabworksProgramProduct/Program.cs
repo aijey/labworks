@@ -16,7 +16,15 @@ namespace LabworksProgramProduct
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var form = new Lab1Form( );
+            var startForm = new Form1();
+            if (startForm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(form);
+            } else
+            {
+                Application.Exit();
+            }
         }
     }
 }

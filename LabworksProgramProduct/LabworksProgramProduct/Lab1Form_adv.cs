@@ -11,7 +11,6 @@ namespace LabworksProgramProduct
     {
         void InitializeComponents()
         {
-            MouseWheel += Lab1Form_MouseWheel1;
             // leftPanel
             leftPanel = new Panel();
             leftPanel.BackColor = System.Drawing.SystemColors.Window;
@@ -28,9 +27,16 @@ namespace LabworksProgramProduct
                 AssignActionsToLeftPanelButtons(i);
             }
             // mainPanel
+            
+            fakePanel = new Panel();
             mainPanel = new Panel();
+            fakePanel.MouseWheel += Lab1Form_MouseWheel1;
+            fakePanel.Scroll += Lab1Form_Scroll;
+            fakePanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             mainPanel.BackColor =  System.Drawing.SystemColors.Control;
-            Controls.Add(mainPanel);
+            fakePanel.AutoScroll = true;
+            Controls.Add(fakePanel);
+            fakePanel.Controls.Add(mainPanel);
             // label
             pagesLabel = new Label();
             pagesLabel.Text = "Сторінка: ";
@@ -41,11 +47,22 @@ namespace LabworksProgramProduct
             textBoxPages.TextChanged += TextBoxPages_TextChanged;
 
             leftPanel.Width = 250;
-            leftPanel.Height = Height - 100;
-            mainPanel.Location = new System.Drawing.Point(leftPanel.Left + leftPanel.Width + 5, 0);
-            mainPanel.Width = (Width - leftPanel.Width - 5 - 40);
+            leftPanel.Height = Height - 50;
+            fakePanel.Location = new System.Drawing.Point(leftPanel.Left + leftPanel.Width + 5, 0);
+            mainPanel.Location = new System.Drawing.Point(0, 0);
+            fakePanel.Width = (Width - leftPanel.Width - 5);
+            mainPanel.Width = fakePanel.Width - 100;
             InitPages();
+            fakePanel.Height = Height - 50;
             mainPanel.Height = Pages.Last().panel.Top + Pages.Last().panel.Height;
+            foreach(var control in mainPanel.Controls)
+            {
+                var contr = control as Panel;
+                if (contr != null)
+                {
+                    contr.Anchor = AnchorStyles.Top;
+                }
+            }
         }
 
         
@@ -105,7 +122,8 @@ namespace LabworksProgramProduct
                 }
             }
             // mainPanel
-            mainPanel.Width = (Width - leftPanel.Width - 5 - 40);
+            fakePanel.Width = (Width - leftPanel.Width - 5 - 40);
+            mainPanel.Width = fakePanel.Width - 100;
             ResizePages();
             mainPanel.Height = Pages.Last().panel.Top + Pages.Last().panel.Height;
 
@@ -329,6 +347,7 @@ namespace LabworksProgramProduct
         }
         void AssignActionsToLeftPanelButtons(int index)
         {
+            index++;
             if (index == 1)
             {
                 leftPanelButtons[0].Click += ToContentsPageButton_Click;
@@ -344,10 +363,46 @@ namespace LabworksProgramProduct
                 leftPanelButtons[2].Click += NextPageButton_Click;
                 leftPanelButtons[2].Text = ">";
             }
+            if (index == 4)
+            {
+                leftPanelButtons[3].Click += ButtonStatic_Click;
+                leftPanelButtons[3].Text = "Побудова статистичних розподілів та їх графічних характеристик";
+            }
+            if (index == 5)
+            {
+                leftPanelButtons[4].Click += ButtonInterval_Click;
+                leftPanelButtons[4].Text = "Побудова інтервальних розподілів та їх графічних характеристик";
+            }
+            if (index == 6)
+            {
+                //leftPanelButtons[5].Click += ;
+                leftPanelButtons[5].Text = "Знаходження та побудова графіку емпіричної функції";
+            }
+            if (index == 7)
+            {
+                leftPanelButtons[6].Click += ButtonNumChar_Click;
+                leftPanelButtons[6].Text = "Знаходження числових характеристик статистичних розподілів";
+            }
+            if (index == 8)
+            {
+                //leftPanelButtons[7].Click += ;
+                leftPanelButtons[7].Text = "Знаходження групових та загальних числових характеристик";
+            }
+            if (index == 9)
+            {
+                //leftPanelButtons[8].Click += ;
+                leftPanelButtons[8].Text = "Визначення коефіцієнту кореляції";
+            }
+            if (index == 10)
+            {
+                //leftPanelButtons[9].Click += ;
+                leftPanelButtons[9].Text = "Побудова лінії регресії";
+            }
         }
         private Panel leftPanel;
         private Panel mainPanel;
-        private Button[] leftPanelButtons = new Button[4];
+        private Panel fakePanel;
+        private Button[] leftPanelButtons = new Button[10];
         private List<Page> Pages = new List<Page>();
         private Label pagesLabel;
         private TextBox textBoxPages;

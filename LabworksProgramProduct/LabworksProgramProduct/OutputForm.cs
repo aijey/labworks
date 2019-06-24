@@ -81,26 +81,46 @@ namespace LabworksProgramProduct
             }
         }
 
+        public OutputForm(SortedDictionary<Interval,double> Dict, string Type)
+        {
+            InitializeComponent();
+            this.Type = Type;
+            dataGridView1.ColumnCount = 2;
+            dataGridView1.ColumnHeadersVisible = true;
+            dataGridView1.Columns[0].HeaderCell.Value = "I";
+            dataGridView1.Columns[1].HeaderCell.Value = "n";
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.RowCount = Dict.Keys.Count;
+            int cnt = 0;
+            foreach (var i in Dict)
+            {
+                dataGridView1[0, cnt].Value = i.Key;
+                dataGridView1[1, cnt++].Value = i.Value;
+            }
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
-            string res = GetOutputData();
-            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
-            saveFileDialog1.FilterIndex = 0;
-            saveFileDialog1.Title = "Зберегти як";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (Type == "Статистичний розподіл" || Type == "Варіаційний ряд")
             {
-                string file = saveFileDialog1.FileName;
-                using(var writer = new StreamWriter(file))
+                string res = GetOutputData();
+                saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+                saveFileDialog1.FilterIndex = 0;
+                saveFileDialog1.Title = "Зберегти як";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    for (int i = 0; i < res.Length; i++)
+                    string file = saveFileDialog1.FileName;
+                    using (var writer = new StreamWriter(file))
                     {
-                        if (res[i] == '\n')
+                        for (int i = 0; i < res.Length; i++)
                         {
-                            writer.WriteLine();
-                        }
-                        else
-                        {
-                            writer.Write(res[i]);
+                            if (res[i] == '\n')
+                            {
+                                writer.WriteLine();
+                            }
+                            else
+                            {
+                                writer.Write(res[i]);
+                            }
                         }
                     }
                 }

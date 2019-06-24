@@ -16,6 +16,7 @@ namespace LabworksProgramProduct
     {
         public Lab1Form()
         {
+            
             InitializeComponent();
             panel1.Focus();
             Controls.Remove(panel1);
@@ -24,6 +25,7 @@ namespace LabworksProgramProduct
             InitializeComponents();
 
             ResizeForm();
+            
         }
         private void Lab1Form_Resize(object sender, EventArgs e)
         {
@@ -84,9 +86,9 @@ namespace LabworksProgramProduct
         }
         private void ToContentsPageButton_Click(object sender, EventArgs e)
         {
-            VerticalScroll.Value = 0;
-            VerticalScroll.Value = 0;
-            VerticalScroll.Value = 0;
+            fakePanel.VerticalScroll.Value = 0;
+            fakePanel.VerticalScroll.Value = 0;
+            fakePanel.VerticalScroll.Value = 0;
             HandleScroll();
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -109,8 +111,15 @@ namespace LabworksProgramProduct
         }
         void GoToPage(int pageNum)
         {
+            if (pageNum < 1 || pageNum > 7)
+            {
+                return;
+            }
             int curPage = 1;
-            VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
+            fakePanel.VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
+            fakePanel.VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
+            fakePanel.VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
+          
             HandleScroll();
         }
         private int GetCurPage()
@@ -118,7 +127,7 @@ namespace LabworksProgramProduct
             int cnt = 1;
             foreach(var page in Pages)
             {
-                if (page.panel.Top + page.panel.Height >= VerticalScroll.Value)
+                if (page.panel.Top + page.panel.Height >= fakePanel.VerticalScroll.Value)
                 {
                     return cnt;
                 }
@@ -156,17 +165,25 @@ namespace LabworksProgramProduct
             var form = new AskingFormDataSource("Статистичний розподіл");
             form.Show();
         }
+        private void ButtonStatic_Click(object sender, EventArgs e)
+        {
+            var form = new StaticForm();
+            form.Show();
+        }
+        private void ButtonInterval_Click(object sender, EventArgs e)
+        {
+            var form = new IntervalForm();
+            form.Show();
+        }
         private void NextPageButton_Click(object sender, EventArgs e)
         {
-            foreach (var page in Pages)
-            {
-                if (page.panel.Top > VerticalScroll.Value)
-                {
-                    VerticalScroll.Value = page.panel.Top - Pages.First().panel.Top;
-                    HandleScroll();
-                    break;
-                }
-            }
+            GoToPage(GetCurPage() + 1);
+        }
+
+        private void ButtonNumChar_Click(object sender, EventArgs e)
+        {
+            var form = new AskingFormDataSource2("Числові характеристики");
+            form.Show();
         }
         private void HandleScroll()
         {
@@ -175,15 +192,7 @@ namespace LabworksProgramProduct
         }
         private void PrevPageButton_Click(object sender, EventArgs e)
         {
-            for (var i = Pages.Count() - 1; i >= 0; i--)
-            {
-                if (Pages[i].panel.Top < VerticalScroll.Value)
-                {
-                    VerticalScroll.Value = Pages[i].panel.Top;
-                    HandleScroll();
-                    break;
-                }
-            }
+            GoToPage(GetCurPage() - 1);
         }
 
         private void Lab1Form_Load(object sender, EventArgs e)

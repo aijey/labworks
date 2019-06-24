@@ -110,5 +110,64 @@ namespace LabworksProgramProduct
             }
             return -1;
         }
+
+        public static SortedDictionary<Interval,double> BuildIntervalDistr(SortedDictionary<double,double> Dict, int m)
+        {
+            double h = (Dict.Max(x => x.Key) - Dict.Min(x => x.Key)) / m;
+            SortedDictionary<Interval, double> intDict = new SortedDictionary<Interval, double>();
+            Interval[] intervals = new Interval[m];
+            intervals[0] = new Interval();
+            intervals[0].LeftBound = Dict.Min(x => x.Key);
+            intervals[0].IsIncludedLeftBound = true;
+            intervals[0].RightBound = intervals[0].LeftBound + h;
+            intervals[0].IsIncludedRightBound = true;
+            intDict[intervals[0]] = 0;
+            for (int i = 1; i < m; i++)
+            {
+                intervals[i] = new Interval();
+                intervals[i].LeftBound = intervals[i - 1].RightBound;
+                intervals[i].IsIncludedLeftBound = false;
+                intervals[i].RightBound = intervals[i].LeftBound + h;
+                intervals[i].IsIncludedRightBound = true;
+                intDict[intervals[i]] = 0;
+            }
+            foreach (var i in Dict)
+            {
+                foreach (var j in intervals)
+                {
+                    if (j.IsIncludedInInterval(i.Key))
+                    {
+
+                        intDict[j] += i.Value;
+
+                    }
+                }
+            }
+            return intDict;
+        }
+
+        public static SortedDictionary<Interval, double> BuildIntervalRelDistr(SortedDictionary<double,double> Dict, int m)
+        {
+            var intDict = BuildIntervalDistr(Dict, m);
+            var keys = intDict.Keys.ToList();
+            double n = intDict.Sum(x => x.Value);
+            foreach (var i in keys)
+            {
+                intDict[i] /= 4 * n;
+            }
+            return intDict;
+        }
+
+        public static double pBegin(SortedDictionary<double,double> Dict, int k)
+        {
+            double n = Dict.Sum(x => x.Value);
+            return Dict.Sum(x => x.Value * Math.Pow(x.Key, k)) / n;
+        }
+        public static double pEnd(SortedDictionary<double, double> Dict, int k)
+        {
+            double n = Dict.Sum(x => x.Value);
+            double avg = Dict.Sum(x => (x.Key * x.Value)) / n;
+            return Dict.Sum(x => x.Value * Math.Pow((x.Key - avg), k)) / n;
+        }
     }
 }

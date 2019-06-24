@@ -23,8 +23,8 @@ namespace LabworksProgramProduct
 
         private void ButtonStart_Click(object sender, EventArgs e)
         {
-            var form = new LabForm();
-            form.Show();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void Button1_Click(object sender, EventArgs e)
