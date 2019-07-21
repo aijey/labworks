@@ -14,9 +14,26 @@ namespace LabworksProgramProduct
 {
     public partial class AskingFormDataSource : Form
     {
-        private string Type;
-        public AskingFormDataSource(string Type)
+        private int Type;
+        public AskingFormDataSource(int Type)
         {
+            if (Type == 3 || Type == 4)
+            {
+                InitializeComponent();
+                openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+                openFileDialog1.FilterIndex = 0;
+                openFileDialog1.Title = "Оберіть вхідний файл";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    var Dict = new SortedDictionary<double, double>();
+                    if (ReadFile(openFileDialog1.FileName, Type - 2, out Dict)){
+                        var form = new StaticTasksForm(Dict);
+                        form.Show();
+                    }
+                }
+                Close();
+                return;
+            }
             this.Type = Type;
             InitializeComponent();
             dataGridView1.RowCount = 1;
@@ -24,55 +41,35 @@ namespace LabworksProgramProduct
             dataGridView1.RowHeadersWidth = 50;
             dataGridView1.ColumnHeadersVisible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        }
-
-        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!radioButton1.Checked)
+            if (Type == 1)
             {
-                return;
+                label4.Text = "Введіть к-сть чисел:";
+                dataGridView1.RowCount = 1;
+                dataGridView1.Rows[0].HeaderCell.Value = "Xi";
+            } 
+            else if (Type == 2)
+            {
+                label4.Text = "Введіть к-сть комірок: ";
+                dataGridView1.RowCount = 2;
+                dataGridView1.Rows[0].HeaderCell.Value = "Xi";
+                dataGridView1.Rows[1].HeaderCell.Value = "Ni";
             }
-            label4.Text = "Введіть к-сть чисел:";
-            dataGridView1.RowCount = 1;
-            dataGridView1.Rows[0].HeaderCell.Value = "Xi";
-        }
-
-        private void RadioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!radioButton2.Checked)
+            else
             {
-                return;
-            }
-            label4.Text = "Введіть к-сть комірок: ";
-            dataGridView1.RowCount = 2;
-            dataGridView1.Rows[0].HeaderCell.Value = "Xi";
-            dataGridView1.Rows[1].HeaderCell.Value = "Ni";
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                int n = int.Parse(textBox1.Text);
-                if (n > 0)
-                {
-                    dataGridView1.ColumnCount = n;
-                }
-            }
-            catch
-            {
-                dataGridView1.ColumnCount = 1;
+                throw new NotImplementedException();
             }
         }
 
+       
         private void Button1_Click(object sender, EventArgs e)
         {
+            
             var Dict = new SortedDictionary<double, double>();
             for (int i=0; i<dataGridView1.ColumnCount; i++)
             {
                 try
                 {
-                    if (radioButton1.Checked)
+                    if (Type == 1)
                     {
                         double val = double.Parse(dataGridView1[i, 0].Value.ToString(), CultureInfo.InvariantCulture);
                         if (!Dict.ContainsKey(val))
@@ -81,7 +78,7 @@ namespace LabworksProgramProduct
                         }
                         Dict[val]++;
                     }
-                    else
+                    else if (Type == 2)
                     {
                         double val = double.Parse(dataGridView1[i, 0].Value.ToString(), CultureInfo.InvariantCulture);
                         double n2 = (double)int.Parse(dataGridView1[i, 1].Value.ToString());
@@ -99,90 +96,12 @@ namespace LabworksProgramProduct
                     return;
                 }
             }
-            ShowResult(Dict);
+            var form = new StaticTasksForm(Dict);
+            form.Show();
+            this.Close();
             
         }
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            string file = "";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
-            openFileDialog1.FilterIndex = 0;
-            openFileDialog1.Title = "Оберіть вхідний файл";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                file = openFileDialog1.FileName;
-                SortedDictionary<double, double> Dict;
-                int type = 0;
-                if (radioButton1.Checked)
-                {
-                    type = 1;
-                } else
-                {
-                    type = 2;
-                }
-                if (ReadFile(file, type,out Dict))
-                {
-                    ShowResult(Dict);
-                }
-            }
-
-        }
-        private void ShowResult(SortedDictionary<double,double> Dict)
-        {
-            if (Type == "Варіаційний ряд")
-            {
-                var res = Tasks.BuildVariantRow(Dict);
-                var form = new OutputForm(res, "Варіаційний ряд");
-                form.Show();
-            }
-            if (Type == "Статистичний розподіл")
-            {
-                var form = new OutputForm(Dict, Type);
-                form.Show();
-            }
-            if (Type == "Статистичний розподіл відносних частот")
-            {
-                var res = Tasks.BuildRelDistr(Dict);
-                var form = new OutputForm(res, "Статистичний розподіл");
-                form.Show();
-            }
-            if (Type == "Статистичний розподіл накопичуваних частот")
-            {
-                var res = Tasks.BuildIncDistr(Dict);
-                var form = new OutputForm(res, "Статистичний розподіл");
-                form.Show();
-            }
-            if (Type == "Статистичний розподіл відносних накопичуваних частот")
-            {
-                var res = Tasks.BuildIncRelDistr(Dict);
-                var form = new OutputForm(res, "Статистичний розподіл");
-                form.Show();
-            }
-            if (Type == "Полігон частот")
-            {
-                var chartForm = new ChartForm1(Dict, new[] { "x", "n" });
-                chartForm.Show();
-            }
-            if (Type == "Полігон відносних частот")
-            {
-                var res = Tasks.BuildRelDistr(Dict);
-                var chartForm = new ChartForm1(res, new[] { "x", "w" });
-                chartForm.Show();
-            }
-            if (Type == "Емпірична функція розподілу")
-            {
-                var res = Tasks.GetEmpFunction(Dict);
-                var form = new FunctionForm(res, new[] { "x", "F*(x)" }, "1");
-                form.Show();
-            }
-            if (Type == "Мода та медіана")
-            {
-                var res = Tasks.GetModAndMed(Dict);
-                MessageBox.Show(res, Type);
-            }
-            Close();
-        }
         private bool ReadFile(string fileName, int type, out SortedDictionary<double,double> Dict)
         {
             Dict = new SortedDictionary<double, double>();
@@ -247,6 +166,25 @@ namespace LabworksProgramProduct
                 }
             }
             return true;
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int n = int.Parse(textBox1.Text);
+                if (n > 0)
+                { 
+                    dataGridView1.ColumnCount = n;
+                } else
+                {
+                    dataGridView1.ColumnCount = 1;
+                }
+            }
+            catch
+            {
+                dataGridView1.ColumnCount = 1;
+            }
         }
     }
 }

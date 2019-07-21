@@ -1,3 +1,5 @@
+# commit notes 21.07.2019 16:00
+- Major updates with Statistic Distr Button. Everything implemented except Moda and Mediana
 # commit notes 24.05.2019 18:30
 - Fixed scroll bugs. Now panel has it's own scrollbar
 - Add new buttons to left panel

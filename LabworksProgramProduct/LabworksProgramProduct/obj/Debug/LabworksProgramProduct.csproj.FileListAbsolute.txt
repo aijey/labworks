@@ -116,6 +116,8 @@ C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\
 C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.csproj.CoreCompileInputs.cache
 C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.exe
 C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.pdb
-C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.StaticForm.resources
 C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.AskingFormDataSource2.resources
 C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.IntervalForm.resources
+C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.StaticFormSelectType.resources
+C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.StaticTasksForm.resources
+C:\Users\Arturan\Desktop\labworks\LabworksProgramProduct\LabworksProgramProduct\obj\Debug\LabworksProgramProduct.ResultForm.resources

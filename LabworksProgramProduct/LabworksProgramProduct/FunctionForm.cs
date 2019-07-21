@@ -93,6 +93,30 @@ namespace LabworksProgramProduct
                 chart1.Series[0].Points.AddXY(i.Key, i.Value);
             }
         }
+        static public System.Windows.Forms.DataVisualization.Charting.Chart GetFreqPolygonChart(SortedDictionary<double, double> Dict)
+        {
+            System.Windows.Forms.DataVisualization.Charting.Chart chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            chart1.ChartAreas.Add("ChartArea1");
+            chart1.Legends.Add("legend1");
+            chart1.Location = new System.Drawing.Point(12, 12);
+            chart1.Name = "chart1";
+            chart1.Size = new System.Drawing.Size(764, 426);
+            chart1.TabIndex = 0;
+            chart1.Text = "chart1";
+            chart1.ChartAreas[0].AxisX.Title = "Xi";
+            chart1.ChartAreas[0].AxisY.Title = "Ni";
+            chart1.Series.Add("");
+            chart1.Series[0].Color = Color.Blue;
+            chart1.Series[0].MarkerBorderWidth += 5;
+            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series[0].IsVisibleInLegend = false;
+            chart1.Series[0].IsValueShownAsLabel = true;
+            foreach (var i in Dict)
+            {
+                chart1.Series[0].Points.AddXY(i.Key, i.Value);
+            }
+            return chart1;
+        }
         private void FunctionForm_Load(object sender, EventArgs e)
         {
 

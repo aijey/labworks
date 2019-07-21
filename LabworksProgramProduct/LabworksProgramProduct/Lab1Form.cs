@@ -33,7 +33,7 @@ namespace LabworksProgramProduct
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Варіаційний ряд");
+            var form = new AskingFormDataSource(5);
             form.Show();
         }
 
@@ -45,43 +45,43 @@ namespace LabworksProgramProduct
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Статистичний розподіл відносних частот");
+            var form = new AskingFormDataSource(7);
             form.Show();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Статистичний розподіл накопичуваних частот");
+            var form = new AskingFormDataSource(8);
             form.Show();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Статистичний розподіл відносних накопичуваних частот");
+            var form = new AskingFormDataSource(9);
             form.Show();
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Полігон частот");
+            var form = new AskingFormDataSource(10);
             form.Show();
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Полігон відносних частот");
+            var form = new AskingFormDataSource(11);
             form.Show();
         }
 
         private void Button9_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Емпірична функція розподілу");
+            var form = new AskingFormDataSource(13);
             form.Show();
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Мода та медіана");
+            var form = new AskingFormDataSource(12);
             form.Show();
         }
         private void ToContentsPageButton_Click(object sender, EventArgs e)
@@ -162,12 +162,12 @@ namespace LabworksProgramProduct
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource("Статистичний розподіл");
+            var form = new AskingFormDataSource(6);
             form.Show();
         }
         private void ButtonStatic_Click(object sender, EventArgs e)
         {
-            var form = new StaticForm();
+            var form = new StaticFormSelectType();
             form.Show();
         }
         private void ButtonInterval_Click(object sender, EventArgs e)
