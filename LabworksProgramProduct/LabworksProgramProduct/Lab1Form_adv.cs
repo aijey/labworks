@@ -375,7 +375,7 @@ namespace LabworksProgramProduct
             }
             if (index == 6)
             {
-                //leftPanelButtons[5].Click += ;
+                leftPanelButtons[5].Click += ButtonGraphics_Click;
                 leftPanelButtons[5].Text = "Знаходження та побудова графіку емпіричної функції";
             }
             if (index == 7)

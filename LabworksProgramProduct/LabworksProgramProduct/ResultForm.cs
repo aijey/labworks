@@ -157,6 +157,15 @@ namespace LabworksProgramProduct
                     prevTop = panel7.Top + panel7.Height;
                     GetRelFreqPolygonChart();
                 }
+                else if (item == 8)
+                {
+                    panel8.Show();
+                    panel8.Top = prevTop + 12;
+                    prevTop = panel8.Top + panel8.Height;
+                    (double[], double) moda = Tasks.GetModAndMed2(Dict);
+                    textBoxModa.Text = "[" + string.Join(", ", moda.Item1) + "]";
+                    textBoxMedian.Text = moda.Item2.ToString();
+                }
             }
         }
 

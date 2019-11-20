@@ -94,6 +94,26 @@ namespace LabworksProgramProduct
             res += "Me: " + Me;
             return res;
         }
+        public static (double[], double) GetModAndMed2(SortedDictionary<double, double> Dict)
+        {
+            double mxN = Dict.Max(x => x.Value);
+            var Mo = from d in Dict
+                     where d.Value == mxN
+                     select d.Key;
+            double Me;
+            int sum = 0;
+            double N = Dict.Sum(x => x.Value);
+            if (N % 2 == 0)
+            {
+                Me = (GetKey(N / 2, ref Dict) + GetKey((int)N / 2 + 1, ref Dict)) / 2;
+            }
+            else
+            {
+                Me = GetKey((int)N / 2 + 1, ref Dict);
+            }
+            (double[], double) res = (Mo.ToArray(), Me);
+            return res;
+        }
         private static double GetKey(double k,ref SortedDictionary<double,double> Dict)
         {
             var tmpDict = new SortedDictionary<double, double>();

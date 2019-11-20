@@ -53,11 +53,17 @@
             this.dataGridStaticRelIncDistr = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.FreqPolygon = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.RelFreqPolygon = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label7 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.labelModa = new System.Windows.Forms.Label();
+            this.labelMedian = new System.Windows.Forms.Label();
+            this.textBoxModa = new System.Windows.Forms.TextBox();
+            this.textBoxMedian = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVariantRow)).BeginInit();
             this.panel2.SuspendLayout();
@@ -72,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.FreqPolygon)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RelFreqPolygon)).BeginInit();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -262,16 +269,6 @@
             this.panel6.Size = new System.Drawing.Size(776, 406);
             this.panel6.TabIndex = 7;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label6.Location = new System.Drawing.Point(305, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 22);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Полігон частот";
-            // 
             // FreqPolygon
             // 
             chartArea1.Name = "ChartArea1";
@@ -287,6 +284,16 @@
             this.FreqPolygon.Size = new System.Drawing.Size(745, 300);
             this.FreqPolygon.TabIndex = 1;
             this.FreqPolygon.Text = "chart1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.label6.Location = new System.Drawing.Point(305, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 22);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Полігон частот";
             // 
             // panel7
             // 
@@ -325,12 +332,73 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Полігон відносних частот";
             // 
+            // panel8
+            // 
+            this.panel8.AutoSize = true;
+            this.panel8.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel8.Controls.Add(this.textBoxMedian);
+            this.panel8.Controls.Add(this.textBoxModa);
+            this.panel8.Controls.Add(this.labelMedian);
+            this.panel8.Controls.Add(this.labelModa);
+            this.panel8.Controls.Add(this.label8);
+            this.panel8.Location = new System.Drawing.Point(12, 1586);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(776, 115);
+            this.panel8.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.label8.Location = new System.Drawing.Point(318, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 22);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Мода і медіана";
+            // 
+            // labelModa
+            // 
+            this.labelModa.AutoSize = true;
+            this.labelModa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.labelModa.Location = new System.Drawing.Point(119, 54);
+            this.labelModa.Name = "labelModa";
+            this.labelModa.Size = new System.Drawing.Size(51, 17);
+            this.labelModa.TabIndex = 1;
+            this.labelModa.Text = "Мода: ";
+            // 
+            // labelMedian
+            // 
+            this.labelMedian.AutoSize = true;
+            this.labelMedian.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.labelMedian.Location = new System.Drawing.Point(119, 89);
+            this.labelMedian.Name = "labelMedian";
+            this.labelMedian.Size = new System.Drawing.Size(70, 17);
+            this.labelMedian.TabIndex = 2;
+            this.labelMedian.Text = "Медіана: ";
+            // 
+            // textBoxModa
+            // 
+            this.textBoxModa.Location = new System.Drawing.Point(232, 51);
+            this.textBoxModa.Name = "textBoxModa";
+            this.textBoxModa.ReadOnly = true;
+            this.textBoxModa.Size = new System.Drawing.Size(100, 20);
+            this.textBoxModa.TabIndex = 3;
+            // 
+            // textBoxMedian
+            // 
+            this.textBoxMedian.Location = new System.Drawing.Point(232, 86);
+            this.textBoxMedian.Name = "textBoxMedian";
+            this.textBoxMedian.ReadOnly = true;
+            this.textBoxMedian.Size = new System.Drawing.Size(100, 20);
+            this.textBoxMedian.TabIndex = 4;
+            // 
             // ResultForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(813, 573);
+            this.ClientSize = new System.Drawing.Size(830, 573);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -361,6 +429,8 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RelFreqPolygon)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,5 +462,11 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataVisualization.Charting.Chart RelFreqPolygon;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxMedian;
+        private System.Windows.Forms.TextBox textBoxModa;
+        private System.Windows.Forms.Label labelMedian;
+        private System.Windows.Forms.Label labelModa;
     }
 }

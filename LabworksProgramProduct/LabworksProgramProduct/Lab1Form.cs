@@ -33,7 +33,7 @@ namespace LabworksProgramProduct
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(5);
+            var form = new AskingFormDataSource(5, Forms.StaticTasksForm);
             form.Show();
         }
 
@@ -45,43 +45,43 @@ namespace LabworksProgramProduct
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(7);
+            var form = new AskingFormDataSource(7, Forms.StaticTasksForm);
             form.Show();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(8);
+            var form = new AskingFormDataSource(8, Forms.StaticTasksForm);
             form.Show();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(9);
+            var form = new AskingFormDataSource(9, Forms.StaticTasksForm);
             form.Show();
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(10);
+            var form = new AskingFormDataSource(10, Forms.StaticTasksForm);
             form.Show();
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(11);
+            var form = new AskingFormDataSource(11, Forms.StaticTasksForm);
             form.Show();
         }
 
         private void Button9_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(13);
+            var form = new AskingFormDataSource(13, Forms.StaticTasksForm);
             form.Show();
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(12);
+            var form = new AskingFormDataSource(12, Forms.StaticTasksForm);
             form.Show();
         }
         private void ToContentsPageButton_Click(object sender, EventArgs e)
@@ -162,7 +162,7 @@ namespace LabworksProgramProduct
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(6);
+            var form = new AskingFormDataSource(6, Forms.StaticTasksForm);
             form.Show();
         }
         private void ButtonStatic_Click(object sender, EventArgs e)
@@ -173,6 +173,12 @@ namespace LabworksProgramProduct
         private void ButtonInterval_Click(object sender, EventArgs e)
         {
             var form = new IntervalForm();
+            form.Show();
+        }
+
+        private void ButtonGraphics_Click(object sender, EventArgs e)
+        {
+            var form = new GraphicsFormSelectType();
             form.Show();
         }
         private void NextPageButton_Click(object sender, EventArgs e)

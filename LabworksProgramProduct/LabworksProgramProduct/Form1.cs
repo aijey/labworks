@@ -29,9 +29,7 @@ namespace LabworksProgramProduct
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            return; // TODO
-            var form = new InstructionForm();
-            form.Show();
+            throw new NotImplementedException();
         }
     }
 }

@@ -50,6 +50,7 @@
             this.label1.Size = new System.Drawing.Size(338, 26);
             this.label1.TabIndex = 0;
             this.label1.Text = "Визначте необхідні завдання";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // checkBox1
             // 
@@ -61,6 +62,7 @@
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Побудова статистичного варіаційного ряду";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -72,6 +74,7 @@
             this.checkBox2.TabIndex = 2;
             this.checkBox2.Text = "Побудова статистичного розподілу частот";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
             // 
             // checkBox3
             // 
@@ -83,6 +86,7 @@
             this.checkBox3.TabIndex = 3;
             this.checkBox3.Text = "Побудова статистичного розподілу відносних частот";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.CheckBox3_CheckedChanged);
             // 
             // checkBox4
             // 
@@ -94,6 +98,7 @@
             this.checkBox4.TabIndex = 4;
             this.checkBox4.Text = "Побудова статистичного розподілу накопичуваних частот";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.CheckBox4_CheckedChanged);
             // 
             // checkBox5
             // 
@@ -105,6 +110,7 @@
             this.checkBox5.TabIndex = 5;
             this.checkBox5.Text = "Побудова статистичного розподілу відносних накопичуваних частот";
             this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.CheckBox5_CheckedChanged);
             // 
             // checkBox6
             // 
@@ -116,6 +122,7 @@
             this.checkBox6.TabIndex = 6;
             this.checkBox6.Text = "Побудова полігону частот";
             this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.CheckBox6_CheckedChanged);
             // 
             // checkBox7
             // 
@@ -127,6 +134,7 @@
             this.checkBox7.TabIndex = 7;
             this.checkBox7.Text = "Побудова полігону відносних частот";
             this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.CheckBox7_CheckedChanged);
             // 
             // checkBox8
             // 
@@ -138,6 +146,7 @@
             this.checkBox8.TabIndex = 8;
             this.checkBox8.Text = "Визначення моди та медіани";
             this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.CheckBox8_CheckedChanged);
             // 
             // checkBox10
             // 

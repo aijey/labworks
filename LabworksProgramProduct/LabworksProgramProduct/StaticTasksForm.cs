@@ -75,5 +75,50 @@ namespace LabworksProgramProduct
             Close();
 
         }
+
+        private void CheckBox8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox7_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

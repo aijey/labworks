@@ -101,11 +101,24 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms.cs" />
     <Compile Include="FunctionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FunctionForm.Designer.cs">
       <DependentUpon>FunctionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicsFormSelectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicsFormSelectType.Designer.cs">
+      <DependentUpon>GraphicsFormSelectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphicsTasksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraphicsTasksForm.Designer.cs">
+      <DependentUpon>GraphicsTasksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HistogramForm1.cs">
       <SubType>Form</SubType>
@@ -161,6 +174,12 @@
     <Compile Include="ResultForm.Designer.cs">
       <DependentUpon>ResultForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResultFormGraphics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultFormGraphics.Designer.cs">
+      <DependentUpon>ResultFormGraphics.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaticFormSelectType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +234,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FunctionForm.resx">
       <DependentUpon>FunctionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicsFormSelectType.resx">
+      <DependentUpon>GraphicsFormSelectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphicsTasksForm.resx">
+      <DependentUpon>GraphicsTasksForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistogramForm1.resx">
       <DependentUpon>HistogramForm1.cs</DependentUpon>

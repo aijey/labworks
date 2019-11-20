@@ -15,8 +15,11 @@ namespace LabworksProgramProduct
     public partial class AskingFormDataSource : Form
     {
         private int Type;
-        public AskingFormDataSource(int Type)
+        private Forms NextForm;
+        
+        public AskingFormDataSource(int Type, Forms nextForm)
         {
+            NextForm = nextForm;
             if (Type == 3 || Type == 4)
             {
                 InitializeComponent();
@@ -96,16 +99,24 @@ namespace LabworksProgramProduct
                     return;
                 }
             }
-            var form = new StaticTasksForm(Dict);
-            form.Show();
-            this.Close();
+            if (NextForm == Forms.StaticTasksForm)
+            {
+                var form = new StaticTasksForm(Dict);
+                form.Show();
+                this.Close();
+            } else if (NextForm == Forms.GraphicsTasksForm)
+            {
+                var form = new GraphicsTasksForm(Dict);
+                form.Show();
+                this.Close();
+            }
             
         }
 
         private bool ReadFile(string fileName, int type, out SortedDictionary<double,double> Dict)
         {
             Dict = new SortedDictionary<double, double>();
-            if (type == 1)
+            if (type == 1) // VariantRow
             {
                 using (var reader = new StreamReader(fileName))
                 {
@@ -139,7 +150,7 @@ namespace LabworksProgramProduct
                     }
                 }
             }
-            if (type == 2)
+            if (type == 2) // StaticDistr
             {
                 using (var reader = new StreamReader(fileName))
                 {
