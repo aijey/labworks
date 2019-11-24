@@ -275,6 +275,9 @@
     <EmbeddedResource Include="ResultForm.resx">
       <DependentUpon>ResultForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResultFormGraphics.resx">
+      <DependentUpon>ResultFormGraphics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaticFormSelectType.resx">
       <DependentUpon>StaticFormSelectType.cs</DependentUpon>
     </EmbeddedResource>

@@ -32,6 +32,7 @@ namespace LabworksProgramProduct
             panel5.Hide();
             panel6.Hide();
             panel7.Hide();
+            panel8.Hide();
             int prevTop = 0;
             foreach (var item in TasksList)
             {

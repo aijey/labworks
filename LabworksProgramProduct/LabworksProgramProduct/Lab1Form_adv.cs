@@ -50,8 +50,8 @@ namespace LabworksProgramProduct
             leftPanel.Height = Height - 50;
             fakePanel.Location = new System.Drawing.Point(leftPanel.Left + leftPanel.Width + 5, 0);
             mainPanel.Location = new System.Drawing.Point(0, 0);
-            fakePanel.Width = (Width - leftPanel.Width - 5);
-            mainPanel.Width = fakePanel.Width - 100;
+            fakePanel.Width = (Width - leftPanel.Width - 20);
+            mainPanel.Width = fakePanel.Width - 20;
             InitPages();
             fakePanel.Height = Height - 50;
             mainPanel.Height = Pages.Last().panel.Top + Pages.Last().panel.Height;
@@ -122,8 +122,8 @@ namespace LabworksProgramProduct
                 }
             }
             // mainPanel
-            fakePanel.Width = (Width - leftPanel.Width - 5 - 40);
-            mainPanel.Width = fakePanel.Width - 100;
+            fakePanel.Width = (Width - leftPanel.Width - 20); // - 5 - 40
+            mainPanel.Width = fakePanel.Width - 20;
             ResizePages();
             mainPanel.Height = Pages.Last().panel.Top + Pages.Last().panel.Height;
 

@@ -30,8 +30,18 @@ namespace LabworksProgramProduct
                 {
                     var Dict = new SortedDictionary<double, double>();
                     if (ReadFile(openFileDialog1.FileName, Type - 2, out Dict)){
-                        var form = new StaticTasksForm(Dict);
-                        form.Show();
+                        if (nextForm == Forms.StaticTasksForm)
+                        {
+                            var form = new StaticTasksForm(Dict);
+                            form.Show();
+                        } else if (nextForm == Forms.GraphicsTasksForm)
+                        {
+                            var form = new GraphicsTasksForm(Dict);
+                            form.Show();
+                        } else
+                        {
+                            throw new InvalidDataException();
+                        }
                     }
                 }
                 Close();

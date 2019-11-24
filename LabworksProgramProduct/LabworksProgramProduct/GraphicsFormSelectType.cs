@@ -39,7 +39,6 @@ namespace LabworksProgramProduct
         private void ButtonStaticFromFile_Click(object sender, EventArgs e)
         {
             var form = new AskingFormDataSource(4, Forms.GraphicsTasksForm);
-            form.Show();
             Close();
         }
     }

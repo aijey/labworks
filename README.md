@@ -1,3 +1,6 @@
+# commit note 24.11.2019 15:20
+- Fixed strange scroll position on main page
+- Added implementation for empiric function distr
 # commit notes 21.07.2019 16:00
 - Major updates with Statistic Distr Button. Everything implemented except Moda and Mediana
 # commit notes 24.05.2019 18:30

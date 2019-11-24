@@ -37,7 +37,11 @@ namespace LabworksProgramProduct
                 {
                     TaskList.Add(2);
                 }
-                var form = new ResultFormGraphics();
+                /*
+                    SortedDictionary<double, double> toDraw = Tasks.GetEmpFunction(Dict);
+                    var form = new FunctionForm(toDraw, new string[2]{ "x", "F*(x)" }, "1");
+                */
+                var form = new ResultFormGraphics(Dict, TaskList);
                 form.Show();
                 Close();
 

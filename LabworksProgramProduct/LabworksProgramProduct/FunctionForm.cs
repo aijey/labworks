@@ -50,7 +50,7 @@ namespace LabworksProgramProduct
             {
                 chart1.Series.Add("");
                 chart1.Series[curSer].Color = Color.Blue;
-                chart1.Series[curSer].MarkerBorderWidth += 5;
+                chart1.Series[curSer].MarkerBorderWidth += 15;
                 chart1.Series[curSer].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                 chart1.Series[curSer].IsVisibleInLegend = false;
                 chart1.Series[curSer].Points.AddXY(prevKey,i.Value);

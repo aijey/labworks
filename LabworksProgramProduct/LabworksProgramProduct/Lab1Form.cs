@@ -193,7 +193,7 @@ namespace LabworksProgramProduct
         }
         private void HandleScroll()
         {
-            leftPanel.Location = new Point(0, 0);
+            //leftPanel.Location = new Point(0, 0);
             textBoxPages.Text = GetCurPage().ToString();
         }
         private void PrevPageButton_Click(object sender, EventArgs e)
