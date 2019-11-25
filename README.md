@@ -1,3 +1,5 @@
+# commit notes 25.11.2019 20:00
+- fixed scrollbar bug
 # commit note 24.11.2019 15:20
 - Fixed strange scroll position on main page
 - Added implementation for empiric function distr

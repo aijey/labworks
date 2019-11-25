@@ -30,8 +30,9 @@ namespace LabworksProgramProduct
             
             fakePanel = new Panel();
             mainPanel = new Panel();
-            fakePanel.MouseWheel += Lab1Form_MouseWheel1;
             fakePanel.Scroll += Lab1Form_Scroll;
+            fakePanel.MouseEnter += Lab1Form_fakePanel_MouseEnter;
+            mainPanel.MouseEnter += Lab1Form_fakePanel_MouseEnter;
             fakePanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             mainPanel.BackColor =  System.Drawing.SystemColors.Control;
             fakePanel.AutoScroll = true;
@@ -139,6 +140,7 @@ namespace LabworksProgramProduct
                 page.panel.Location = new System.Drawing.Point(0, prevY + 5);
                 SetupPanel(page, i);
                 prevY = page.panel.Height + page.panel.Top;
+                page.panel.MouseEnter += Lab1Form_fakePanel_MouseEnter;
                 mainPanel.Controls.Add(page.panel);
                 Pages.Add(page);
             }
@@ -206,6 +208,7 @@ namespace LabworksProgramProduct
             if (index <= 3 || index >= 5 && index <= 6)
             {
                 var img = InitPictureBox(index, ref page.panel);
+                img.MouseEnter += Lab1Form_fakePanel_MouseEnter;
                 page.PictureBoxes.Add(img);
                 page.panel.Controls.Add(img);
                 page.panel.Height = img.Height;

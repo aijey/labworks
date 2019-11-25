@@ -23,9 +23,9 @@ namespace LabworksProgramProduct
             Controls.Remove(panel2);
             Controls.Remove(panel3);
             InitializeComponents();
-
             ResizeForm();
-            
+            fakePanel.Focus();
+
         }
         private void Lab1Form_Resize(object sender, EventArgs e)
         {
@@ -211,10 +211,10 @@ namespace LabworksProgramProduct
             HandleScroll();
         }
 
-        private void Lab1Form_MouseWheel1(object sender, MouseEventArgs e)
+        private void Lab1Form_fakePanel_MouseEnter(object sender, EventArgs e)
         {
-            HandleScroll();
+            fakePanel.Focus();
         }
-        
+
     }
 }
