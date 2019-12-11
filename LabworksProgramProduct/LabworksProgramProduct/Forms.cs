@@ -9,6 +9,7 @@ namespace LabworksProgramProduct
     public enum Forms
     {
         StaticTasksForm,
-        GraphicsTasksForm
+        GraphicsTasksForm,
+        SelectNumberOfIntervalsForm
     }
 }

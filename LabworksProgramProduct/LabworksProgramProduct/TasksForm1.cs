@@ -193,7 +193,7 @@ namespace LabworksProgramProduct
                 var form = new HistogramForm1(intDict, new[] { "I (номер інтервалу)", "n/4" });
                 form.Show();
             }
-            catch(Exception ex)
+            catch
             {
                 return;
             }

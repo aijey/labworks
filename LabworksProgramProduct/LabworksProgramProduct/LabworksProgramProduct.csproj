@@ -138,6 +138,18 @@
     <Compile Include="IntervalForm.Designer.cs">
       <DependentUpon>IntervalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntervalFormSelectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntervalFormSelectType.Designer.cs">
+      <DependentUpon>IntervalFormSelectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IntervalTasksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntervalTasksForm.Designer.cs">
+      <DependentUpon>IntervalTasksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab1Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +191,12 @@
     </Compile>
     <Compile Include="ResultFormGraphics.Designer.cs">
       <DependentUpon>ResultFormGraphics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectNumberOfIntervalsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectNumberOfIntervalsForm.Designer.cs">
+      <DependentUpon>SelectNumberOfIntervalsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StaticFormSelectType.cs">
       <SubType>Form</SubType>
@@ -250,6 +268,12 @@
     <EmbeddedResource Include="IntervalForm.resx">
       <DependentUpon>IntervalForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IntervalFormSelectType.resx">
+      <DependentUpon>IntervalFormSelectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntervalTasksForm.resx">
+      <DependentUpon>IntervalTasksForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab1Form.resx">
       <DependentUpon>Lab1Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResultFormGraphics.resx">
       <DependentUpon>ResultFormGraphics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectNumberOfIntervalsForm.resx">
+      <DependentUpon>SelectNumberOfIntervalsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaticFormSelectType.resx">
       <DependentUpon>StaticFormSelectType.cs</DependentUpon>

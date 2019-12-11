@@ -172,7 +172,7 @@ namespace LabworksProgramProduct
         }
         private void ButtonInterval_Click(object sender, EventArgs e)
         {
-            var form = new IntervalForm();
+            var form = new IntervalFormSelectType();
             form.Show();
         }
 

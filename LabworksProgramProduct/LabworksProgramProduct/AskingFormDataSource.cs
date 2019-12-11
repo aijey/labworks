@@ -38,10 +38,15 @@ namespace LabworksProgramProduct
                         {
                             var form = new GraphicsTasksForm(Dict);
                             form.Show();
+                        } else if (nextForm == Forms.SelectNumberOfIntervalsForm)
+                        {
+                            var form = new SelectNumberOfIntervalsForm(Dict);
+                            form.Show();
                         } else
                         {
                             throw new InvalidDataException();
                         }
+                       
                     }
                 }
                 Close();
@@ -117,6 +122,11 @@ namespace LabworksProgramProduct
             } else if (NextForm == Forms.GraphicsTasksForm)
             {
                 var form = new GraphicsTasksForm(Dict);
+                form.Show();
+                this.Close();
+            } else if (NextForm == Forms.SelectNumberOfIntervalsForm)
+            {
+                var form = new SelectNumberOfIntervalsForm(Dict);
                 form.Show();
                 this.Close();
             }
