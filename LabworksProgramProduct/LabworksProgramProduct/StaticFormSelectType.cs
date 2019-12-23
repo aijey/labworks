@@ -19,27 +19,27 @@ namespace LabworksProgramProduct
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(1, Forms.StaticTasksForm);
+            var form = new AskingFormDataSource(AskingForms.VariantRow, Forms.StaticTasksForm);
             form.Show();
             Close();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(2, Forms.StaticTasksForm);
+            var form = new AskingFormDataSource(AskingForms.StatisticDistr, Forms.StaticTasksForm);
             form.Show();
             Close();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(3, Forms.StaticTasksForm);
+            var form = new AskingFormDataSource(AskingForms.VariantRowFromFile, Forms.StaticTasksForm);
             Close();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(4, Forms.StaticTasksForm);
+            var form = new AskingFormDataSource(AskingForms.StatisticDistrFromFile, Forms.StaticTasksForm);
             Close();
         }
     }

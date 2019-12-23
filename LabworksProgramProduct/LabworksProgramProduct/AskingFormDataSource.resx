@@ -123,4 +123,9 @@
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
   </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Уважно дотримуйтеся правил вводу інтервалів. Наступний інтервал обов'язково повинен починатися з кінця 
+попереднього. Відкриваюча дужка обов'язково квадратна, закриваюча - кругла (окрім останнього інтервалу).
+Межі інтервалу розділяти комою і пробілом ", ".</value>
+  </data>
 </root>

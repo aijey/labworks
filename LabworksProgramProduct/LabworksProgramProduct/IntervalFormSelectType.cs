@@ -19,22 +19,28 @@ namespace LabworksProgramProduct
 
         private void ButtonVariantRow_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(1, Forms.SelectNumberOfIntervalsForm);
+            var form = new AskingFormDataSource(AskingForms.VariantRow, Forms.SelectNumberOfIntervalsForm);
             form.Show();
             this.Close();
         }
 
         private void ButtonStatisticDistr_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(2, Forms.SelectNumberOfIntervalsForm);
+            var form = new AskingFormDataSource(AskingForms.StatisticDistr, Forms.SelectNumberOfIntervalsForm);
             form.Show();
             this.Close();
         }
 
         private void ButtonStatisticFromFile_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(4, Forms.SelectNumberOfIntervalsForm);
+            var form = new AskingFormDataSource(AskingForms.StatisticDistrFromFile, Forms.SelectNumberOfIntervalsForm);
             this.Close();
+        }
+
+        private void ButtonIntervalDistr_Click(object sender, EventArgs e)
+        {
+            var form = new AskingFormDataSource(AskingForms.IntervalDistr, Forms.IntervalTasksForm);
+            form.Show();
         }
     }
 }

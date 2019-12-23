@@ -46,6 +46,7 @@
             this.ButtonIntervalDistr.TabIndex = 11;
             this.ButtonIntervalDistr.Text = "Ввід інтервального розподілу\r\n";
             this.ButtonIntervalDistr.UseVisualStyleBackColor = true;
+            this.ButtonIntervalDistr.Click += new System.EventHandler(this.ButtonIntervalDistr_Click);
             // 
             // ButtonStatisticFromFile
             // 

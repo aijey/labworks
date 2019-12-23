@@ -14,13 +14,13 @@ namespace LabworksProgramProduct
 {
     public partial class AskingFormDataSource : Form
     {
-        private int Type;
+        private AskingForms Type;
         private Forms NextForm;
         
-        public AskingFormDataSource(int Type, Forms nextForm)
+        public AskingFormDataSource(AskingForms Type, Forms nextForm)
         {
             NextForm = nextForm;
-            if (Type == 3 || Type == 4)
+            if (Type == AskingForms.VariantRowFromFile || Type == AskingForms.StatisticDistrFromFile)
             {
                 InitializeComponent();
                 openFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -29,7 +29,7 @@ namespace LabworksProgramProduct
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     var Dict = new SortedDictionary<double, double>();
-                    if (ReadFile(openFileDialog1.FileName, Type - 2, out Dict)){
+                    if (ReadFile(openFileDialog1.FileName, Type, out Dict)){
                         if (nextForm == Forms.StaticTasksForm)
                         {
                             var form = new StaticTasksForm(Dict);
@@ -46,7 +46,6 @@ namespace LabworksProgramProduct
                         {
                             throw new InvalidDataException();
                         }
-                       
                     }
                 }
                 Close();
@@ -59,22 +58,31 @@ namespace LabworksProgramProduct
             dataGridView1.RowHeadersWidth = 50;
             dataGridView1.ColumnHeadersVisible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            if (Type == 1)
+            if (AskingForms.VariantRow == Type)
             {
+                label1.Text = "";
                 label4.Text = "Введіть к-сть чисел:";
                 dataGridView1.RowCount = 1;
                 dataGridView1.Rows[0].HeaderCell.Value = "Xi";
             } 
-            else if (Type == 2)
+            else if (Type == AskingForms.StatisticDistr)
             {
+                label1.Text = "";
                 label4.Text = "Введіть к-сть комірок: ";
                 dataGridView1.RowCount = 2;
                 dataGridView1.Rows[0].HeaderCell.Value = "Xi";
                 dataGridView1.Rows[1].HeaderCell.Value = "Ni";
             }
+            else if (Type == AskingForms.IntervalDistr)
+            {
+                label4.Text = "Введіть к-сть інтервалів: ";
+                dataGridView1.RowCount = 2;
+                dataGridView1.Rows[0].HeaderCell.Value = "I";
+                dataGridView1.Rows[1].HeaderCell.Value = "Ni";
+            }
             else
             {
-                throw new NotImplementedException();
+                throw new InvalidDataException();
             }
         }
 
@@ -83,11 +91,13 @@ namespace LabworksProgramProduct
         {
             
             var Dict = new SortedDictionary<double, double>();
+            double prevR = 0;
+            var IntDict = new SortedDictionary<Interval, double>();
             for (int i=0; i<dataGridView1.ColumnCount; i++)
             {
                 try
                 {
-                    if (Type == 1)
+                    if (Type == AskingForms.VariantRow)
                     {
                         double val = double.Parse(dataGridView1[i, 0].Value.ToString(), CultureInfo.InvariantCulture);
                         if (!Dict.ContainsKey(val))
@@ -96,7 +106,7 @@ namespace LabworksProgramProduct
                         }
                         Dict[val]++;
                     }
-                    else if (Type == 2)
+                    else if (Type == AskingForms.StatisticDistr)
                     {
                         double val = double.Parse(dataGridView1[i, 0].Value.ToString(), CultureInfo.InvariantCulture);
                         double n2 = (double)int.Parse(dataGridView1[i, 1].Value.ToString());
@@ -106,6 +116,26 @@ namespace LabworksProgramProduct
                             return;
                         }
                         Dict[val] = n2;
+                    } 
+                    else if (Type == AskingForms.IntervalDistr)
+                    {
+                        string st = dataGridView1[i, 0].Value.ToString();
+                        var strs = st.Split(',');
+                        double l = double.Parse(strs[0].Substring(1), CultureInfo.InvariantCulture);
+                        double r = double.Parse(strs[1].Substring(1, strs[1].Length - 2), CultureInfo.InvariantCulture);
+                        
+                        if (i > 0)
+                        {
+                          
+                            if (prevR != l)
+                            {
+                                throw new InvalidDataException("prevR is not Equal current L");
+                            }
+                        }
+                        Interval intr = new Interval(l, (strs[0][0] == '['), r, (strs[1][strs[1].Length - 1] == ']'));
+                        double n2 = (double)int.Parse(dataGridView1[i, 1].Value.ToString());
+                        IntDict[intr] = n2;
+                        prevR = r;
                     }
                 }
                 catch
@@ -129,14 +159,22 @@ namespace LabworksProgramProduct
                 var form = new SelectNumberOfIntervalsForm(Dict);
                 form.Show();
                 this.Close();
+            } else if (NextForm == Forms.IntervalTasksForm)
+            {
+                var form = new IntervalTasksForm(IntDict);
+                form.Show();
+                this.Close();
+            } else
+            {
+                throw new InvalidDataException();
             }
             
         }
 
-        private bool ReadFile(string fileName, int type, out SortedDictionary<double,double> Dict)
+        private bool ReadFile(string fileName, AskingForms type, out SortedDictionary<double,double> Dict)
         {
             Dict = new SortedDictionary<double, double>();
-            if (type == 1) // VariantRow
+            if (type == AskingForms.VariantRowFromFile) // VariantRow
             {
                 using (var reader = new StreamReader(fileName))
                 {
@@ -170,7 +208,7 @@ namespace LabworksProgramProduct
                     }
                 }
             }
-            if (type == 2) // StaticDistr
+            else if (type == AskingForms.StatisticDistrFromFile) // StaticDistr
             {
                 using (var reader = new StreamReader(fileName))
                 {
@@ -195,6 +233,9 @@ namespace LabworksProgramProduct
                     }
 
                 }
+            } else
+            {
+                throw new InvalidDataException();
             }
             return true;
         }
@@ -210,6 +251,15 @@ namespace LabworksProgramProduct
                 } else
                 {
                     dataGridView1.ColumnCount = 1;
+                }
+                if (Type == AskingForms.IntervalDistr)
+                {
+                    for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                    {
+                        dataGridView1.Columns[i].MinimumWidth = 50;
+                        dataGridView1.Rows[0].Cells[i].Value = "[a, b)";
+                    }
+                    dataGridView1.AutoResizeColumns();
                 }
             }
             catch

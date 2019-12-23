@@ -33,8 +33,7 @@ namespace LabworksProgramProduct
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(5, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
 
         private void Lab1Form_Shown(object sender, EventArgs e)
@@ -45,44 +44,37 @@ namespace LabworksProgramProduct
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(7, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(8, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(9, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(10, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(11, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
 
         private void Button9_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(13, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(12, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
         private void ToContentsPageButton_Click(object sender, EventArgs e)
         {
@@ -162,8 +154,7 @@ namespace LabworksProgramProduct
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(6, Forms.StaticTasksForm);
-            form.Show();
+            throw new NotImplementedException();
         }
         private void ButtonStatic_Click(object sender, EventArgs e)
         {

@@ -19,14 +19,14 @@ namespace LabworksProgramProduct
 
         private void ButtonManual1_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(1, Forms.GraphicsTasksForm);
+            var form = new AskingFormDataSource(AskingForms.VariantRow, Forms.GraphicsTasksForm);
             form.Show();
             Close();
         }
 
         private void ButtonManualStatic_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(2, Forms.GraphicsTasksForm);
+            var form = new AskingFormDataSource(AskingForms.StatisticDistr, Forms.GraphicsTasksForm);
             form.Show();
             Close();
         }
@@ -38,7 +38,7 @@ namespace LabworksProgramProduct
 
         private void ButtonStaticFromFile_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource(4, Forms.GraphicsTasksForm);
+            var form = new AskingFormDataSource(AskingForms.StatisticDistrFromFile, Forms.GraphicsTasksForm);
             Close();
         }
     }

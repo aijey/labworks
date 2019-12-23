@@ -189,5 +189,41 @@ namespace LabworksProgramProduct
             double avg = Dict.Sum(x => (x.Key * x.Value)) / n;
             return Dict.Sum(x => x.Value * Math.Pow((x.Key - avg), k)) / n;
         }
+        public static SortedDictionary<Interval, double> GetIntDict(SortedDictionary<double, double> dict, int m)
+        {
+            double h = (dict.Max(x => x.Key) - dict.Min(x => x.Key)) / m; ;
+           
+            SortedDictionary<Interval, double> intDict = new SortedDictionary<Interval, double>();
+            Interval[] intervals = new Interval[m];
+            intervals[0] = new Interval();
+            intervals[0].LeftBound = dict.Min(x => x.Key);
+            intervals[0].IsIncludedLeftBound = true;
+            intervals[0].RightBound = intervals[0].LeftBound + h;
+            intervals[0].IsIncludedRightBound = true;
+            intDict[intervals[0]] = 0;
+            for (int i = 1; i < m; i++)
+            {
+                intervals[i] = new Interval();
+                intervals[i].LeftBound = intervals[i - 1].RightBound;
+                intervals[i].IsIncludedLeftBound = false;
+                intervals[i].RightBound = intervals[i].LeftBound + h;
+                intervals[i].IsIncludedRightBound = true;
+                intDict[intervals[i]] = 0;
+            }
+            foreach (var i in dict)
+            {
+                foreach (var j in intervals)
+                {
+                    if (j.IsIncludedInInterval(i.Key))
+                    {
+
+                        intDict[j] += i.Value;
+
+                    }
+                }
+            }
+            return intDict;
+
+        }
     }
 }
