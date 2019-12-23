@@ -73,11 +73,8 @@ namespace LabworksProgramProduct
                     panel3.Show();
                     panel3.Top = prevTop + 12;
                     prevTop = panel3.Top + panel3.Height;
-                    /*
-                    (double[], double) moda = Tasks.GetModAndMedInterval(Dict);
-                    textBoxModa.Text = "[" + string.Join(", ", moda.Item1) + "]";
-                    textBoxMedian.Text = moda.Item2.ToString();
-                    */
+                    textBoxModa.Text = Tasks.GetIntervalModa(Dict).ToString();
+                    textBoxMedian.Text = Tasks.GetIntervalMed(Dict).ToString();
                 }
                 else
                 {

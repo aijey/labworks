@@ -73,6 +73,26 @@ namespace LabworksProgramProduct
             tmpDict[last + 10] = sum;
             return tmpDict;
         }
+
+        public static SortedDictionary<double, double> GetEmpFunction(SortedDictionary<Interval, double> Dict)
+        {
+            var res = new SortedDictionary<double, double>();
+
+            var mn = Dict.Min(x => x.Key);
+            double n = Dict.Sum(x => x.Value);
+            double cur = mn.LeftBound;
+            double Nak = 0;
+            res[cur] = Nak;
+            foreach(var intr in Dict)
+            {
+                Nak += intr.Value;
+                cur = intr.Key.RightBound;
+                res[cur] = Nak/n;
+            }
+
+            return res;
+
+        }
         public static string GetModAndMed(SortedDictionary<double,double> Dict)
         {
             double mxN = Dict.Max(x => x.Value);
@@ -182,6 +202,52 @@ namespace LabworksProgramProduct
         {
             double n = Dict.Sum(x => x.Value);
             return Dict.Sum(x => x.Value * Math.Pow(x.Key, k)) / n;
+        }
+
+        public static double GetIntervalMed(SortedDictionary<Interval, double> Dict)
+        {
+            double Me = 0;
+            var emp = Tasks.GetEmpFunction(Dict);
+            double prevK = 0;
+            double prevV = 0;
+            foreach(var r in emp)
+            {
+                if (r.Value >= 0.5)
+                {
+                    double h = r.Key - prevK;
+                    Me = prevK + (0.5 - prevV) * h / (r.Value - prevV);
+                    break;
+                }
+
+                prevK = r.Key;
+                prevV = r.Value;
+            }
+            
+            return Me;
+        }
+        public static double GetIntervalModa(SortedDictionary<Interval, double> Dict)
+        {
+            var mx = Dict.Max(x => x.Value);
+            var lst = new List<(Interval, double)>();
+            double Mo = 0;
+            foreach (var i in Dict)
+            {
+                lst.Add((i.Key, i.Value));
+            }
+            for(int i = 0; i < lst.Count; i++)
+            {
+                
+                if (lst[i].Item2 == mx)
+                {
+                    double nprev = i == 0 ? 0 : lst[i - 1].Item2;
+                    double ncur = mx;
+                    double nnext = i + 1 == lst.Count ? 0 : lst[i + 1].Item2;
+                    Mo = lst[i].Item1.LeftBound + (ncur - nprev) / (2 * ncur - nprev - nnext);
+                    break;
+                }
+                
+            }
+            return Mo;
         }
         public static double pEnd(SortedDictionary<double, double> Dict, int k)
         {
