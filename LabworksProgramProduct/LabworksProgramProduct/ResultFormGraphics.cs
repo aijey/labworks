@@ -60,8 +60,12 @@ namespace LabworksProgramProduct
                 }
             } else
             {
-                SortedDictionary<double, double> toDraw = Tasks.GetIntEmpFunction(IntDict);
-
+                string[] strs = Tasks.GetIntEmpFunctionStrings(IntDict);
+                labelFuncValue.Text = "";
+                foreach (var item in strs)
+                {
+                    labelFuncValue.Text += item + "\n";
+                }
             }
                 // ALIGN STAFF //
                 labelFunc.Top = labelFuncValue.Bottom - labelFuncValue.Height / 2;
@@ -76,23 +80,41 @@ namespace LabworksProgramProduct
 
         private void InitPanel2()
         {
-            SortedDictionary<double, double> toDraw = Tasks.GetEmpFunction(Dict);
-            double min = toDraw.Min(x => x.Key) - 10;
-            double max = toDraw.Max(x => x.Key) + 10;
-            int curSer = 0;
-            double prevKey = min;
-            chart1.ChartAreas[0].AxisX.Title = "x";
-            chart1.ChartAreas[0].AxisY.Title = "F*(x)";
-            foreach (var i in toDraw)
+            if (Dict.Count > 0)
             {
+                SortedDictionary<double, double> toDraw = Tasks.GetEmpFunction(Dict);
+                double min = toDraw.Min(x => x.Key) - 10;
+                double max = toDraw.Max(x => x.Key) + 10;
+                int curSer = 0;
+                double prevKey = min;
+                chart1.ChartAreas[0].AxisX.Title = "x";
+                chart1.ChartAreas[0].AxisY.Title = "F*(x)";
+                foreach (var i in toDraw)
+                {
+                    chart1.Series.Add("");
+                    chart1.Series[curSer].Color = Color.Blue;
+                    chart1.Series[curSer].MarkerBorderWidth += 15;
+                    chart1.Series[curSer].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                    chart1.Series[curSer].IsVisibleInLegend = false;
+                    chart1.Series[curSer].Points.AddXY(prevKey, i.Value);
+                    chart1.Series[curSer++].Points.AddXY(i.Key, i.Value);
+                    prevKey = i.Key;
+                }
+            }
+            else
+            {
+                SortedDictionary<double, double> toDraw = Tasks.GetIntEmpFunctionDots(IntDict);
+                chart1.ChartAreas[0].AxisX.Title = "x";
+                chart1.ChartAreas[0].AxisY.Title = "F*(x)";
                 chart1.Series.Add("");
-                chart1.Series[curSer].Color = Color.Blue;
-                chart1.Series[curSer].MarkerBorderWidth += 15;
-                chart1.Series[curSer].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                chart1.Series[curSer].IsVisibleInLegend = false;
-                chart1.Series[curSer].Points.AddXY(prevKey, i.Value);
-                chart1.Series[curSer++].Points.AddXY(i.Key, i.Value);
-                prevKey = i.Key;
+                chart1.Series[0].Color = Color.Blue;
+                chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                chart1.Series[0].IsVisibleInLegend = false;
+                chart1.Series[0].IsValueShownAsLabel = true;
+                foreach (var item in toDraw)
+                {
+                    chart1.Series[0].Points.AddXY(item.Key, item.Value);
+                }
             }
         }
         private void DrawPanels()

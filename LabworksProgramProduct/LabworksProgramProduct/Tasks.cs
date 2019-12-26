@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace LabworksProgramProduct
 {
     public class Tasks
     {
-        public static List<double> BuildVariantRow(SortedDictionary<double,double> Dict)
+        public static List<double> BuildVariantRow(SortedDictionary<double, double> Dict)
         {
             var res = new List<double>();
             foreach (var i in Dict)
@@ -22,7 +22,7 @@ namespace LabworksProgramProduct
             }
             return res;
         }
-        public static SortedDictionary<double,double> BuildRelDistr(SortedDictionary<double,double> Dict)
+        public static SortedDictionary<double, double> BuildRelDistr(SortedDictionary<double, double> Dict)
         {
             var tmpDict = new SortedDictionary<double, double>();
             var N = Dict.Sum(x => x.Value);
@@ -57,7 +57,7 @@ namespace LabworksProgramProduct
             tmpDict[1e9] = sum;
             return tmpDict;
         }
-        public static SortedDictionary<double,double> GetEmpFunction(SortedDictionary<double,double> Dict)
+        public static SortedDictionary<double, double> GetEmpFunction(SortedDictionary<double, double> Dict)
         {
             var tmpDict = new SortedDictionary<double, double>();
             var N = Dict.Sum(x => x.Value);
@@ -74,11 +74,35 @@ namespace LabworksProgramProduct
             return tmpDict;
         }
 
-        public static SortedDictionary<double, double> GetIntEmpFunction(SortedDictionary<Interval, double> intDict)
+        public static string[] GetIntEmpFunctionStrings(SortedDictionary<Interval, double> intDict)
         {
+            var res = new string[intDict.Count + 1];
+            var mn = intDict.Min(x => x.Key);
+            res[0] = $"0, при x <= {mn.LeftBound};";
+            int cur = 0;
+            double prev = 0;
+            double n = intDict.Sum(x => x.Value);
+            foreach(var item in intDict)
+            {
+                cur++;
+                prev += item.Value / n;
+                res[cur] = $"{prev}, при {item.Key.LeftBound} < x <= {item.Key.RightBound};";
+            }
+
+            return res;
+        }
+
+        public static SortedDictionary<double, double> GetIntEmpFunctionDots(SortedDictionary<Interval, double> intDict){
             var res = new SortedDictionary<double, double>();
-
-
+            var mn = intDict.Min(x => x.Key);
+            res[mn.LeftBound] = 0;
+            double prev = 0;
+            double n = intDict.Sum(x => x.Value);
+            foreach(var item in intDict)
+            {
+                prev += item.Value / n;
+                res[item.Key.RightBound] = prev;
+            }
             return res;
         }
 
