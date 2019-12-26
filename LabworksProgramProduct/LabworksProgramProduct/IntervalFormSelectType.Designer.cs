@@ -113,6 +113,7 @@
             this.ButtonIntervalFromFile.TabIndex = 12;
             this.ButtonIntervalFromFile.Text = "Ввід інтервального розподілу з файлу";
             this.ButtonIntervalFromFile.UseVisualStyleBackColor = true;
+            this.ButtonIntervalFromFile.Click += new System.EventHandler(this.ButtonIntervalFromFile_Click);
             // 
             // IntervalFormSelectType
             // 

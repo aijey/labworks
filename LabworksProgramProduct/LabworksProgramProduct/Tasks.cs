@@ -74,6 +74,14 @@ namespace LabworksProgramProduct
             return tmpDict;
         }
 
+        public static SortedDictionary<double, double> GetIntEmpFunction(SortedDictionary<Interval, double> intDict)
+        {
+            var res = new SortedDictionary<double, double>();
+
+
+            return res;
+        }
+
         public static SortedDictionary<double, double> GetEmpFunction(SortedDictionary<Interval, double> Dict)
         {
             var res = new SortedDictionary<double, double>();
@@ -134,6 +142,18 @@ namespace LabworksProgramProduct
             (double[], double) res = (Mo.ToArray(), Me);
             return res;
         }
+
+        public static SortedDictionary<Interval, double> GetIntervalRelStatDistr(SortedDictionary<Interval, double> dict)
+        {
+            var res = new SortedDictionary<Interval, double>();
+            double n = dict.Sum(x => x.Value);
+            foreach(var item in dict)
+            {
+                res[item.Key] = item.Value / n;
+            }
+            return res;
+        }
+
         private static double GetKey(double k,ref SortedDictionary<double,double> Dict)
         {
             var tmpDict = new SortedDictionary<double, double>();

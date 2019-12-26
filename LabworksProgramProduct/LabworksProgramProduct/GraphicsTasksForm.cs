@@ -13,9 +13,17 @@ namespace LabworksProgramProduct
     public partial class GraphicsTasksForm : Form
     {
         public SortedDictionary<double, double> Dict;
+        public SortedDictionary<Interval, double> IntDict;
         public GraphicsTasksForm(SortedDictionary<double, double> dict)
         {
             Dict = dict;
+            IntDict = new SortedDictionary<Interval, double>();
+            InitializeComponent();
+        }
+        public GraphicsTasksForm(SortedDictionary<Interval, double> intdict)
+        {
+            IntDict = intdict;
+            Dict = new SortedDictionary<double, double>();
             InitializeComponent();
         }
 
@@ -41,9 +49,18 @@ namespace LabworksProgramProduct
                     SortedDictionary<double, double> toDraw = Tasks.GetEmpFunction(Dict);
                     var form = new FunctionForm(toDraw, new string[2]{ "x", "F*(x)" }, "1");
                 */
-                var form = new ResultFormGraphics(Dict, TaskList);
-                form.Show();
-                Close();
+                if (Dict.Count > 0)
+                {
+                    var form = new ResultFormGraphics(Dict, TaskList);
+                    form.Show();
+                    Close();
+                } 
+                else if (IntDict.Count > 0)
+                {
+                    var form = new ResultFormGraphics(IntDict, TaskList);
+                    form.Show();
+                    Close();
+                }
 
             } else
             {

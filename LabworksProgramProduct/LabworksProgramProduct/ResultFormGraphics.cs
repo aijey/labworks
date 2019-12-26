@@ -13,45 +13,65 @@ namespace LabworksProgramProduct
     public partial class ResultFormGraphics : Form
     {
         private SortedDictionary<double, double> Dict;
+        private SortedDictionary<Interval, double> IntDict;
         private List<int> TaskList;
         public ResultFormGraphics(SortedDictionary<double, double> dict, List<int> lst)
         {
             InitializeComponent();
             Dict = dict;
             TaskList = lst;
+            IntDict = new SortedDictionary<Interval, double>();
+            DrawPanels();
+        }
+        public ResultFormGraphics(SortedDictionary<Interval, double> intdict, List<int> lst)
+        {
+            InitializeComponent();
+            Dict = new SortedDictionary<double, double>();
+            IntDict = intdict;
+            TaskList = lst;
             DrawPanels();
         }
         private void InitPanel1()
         {
-            SortedDictionary<double, double> toDraw = Tasks.GetEmpFunction(Dict);
-            int num = 1;
-            labelFuncValue.Text = "";
-            double prevKey = -1000;
-            foreach (var i in toDraw)
+            if (Dict.Count > 0)
             {
-                string row = "";
-                if (num == 1)
+                SortedDictionary<double, double> toDraw = Tasks.GetEmpFunction(Dict);
+                int num = 1;
+                labelFuncValue.Text = "";
+                double prevKey = -1000;
+                foreach (var i in toDraw)
                 {
-                    row = "0, при x <= " + i.Key.ToString() + "\n";
-                } else if (num < toDraw.Count())
-                {
-                    row = i.Value.ToString() + ", при " + prevKey.ToString() + " < x <= " + i.Key.ToString() + "\n";
-                } else
-                {
-                    row = "1, при x > " + prevKey.ToString() + "\n";
+                    string row = "";
+                    if (num == 1)
+                    {
+                        row = "0, при x <= " + i.Key.ToString() + "\n";
+                    }
+                    else if (num < toDraw.Count())
+                    {
+                        row = i.Value.ToString() + ", при " + prevKey.ToString() + " < x <= " + i.Key.ToString() + "\n";
+                    }
+                    else
+                    {
+                        row = "1, при x > " + prevKey.ToString() + "\n";
+                    }
+                    labelFuncValue.Text += row;
+                    prevKey = i.Key;
+                    num++;
                 }
-                labelFuncValue.Text += row;
-                prevKey = i.Key;
-                num++;
+            } else
+            {
+                SortedDictionary<double, double> toDraw = Tasks.GetIntEmpFunction(IntDict);
+
             }
-            // ALIGN STAFF //
-            labelFunc.Top = labelFuncValue.Bottom - labelFuncValue.Height / 2;
-            int w = panel1.Width;
-            int wl = labelFuncValue.Right - labelFunc.Left;
-            int x = (w - wl) / 2;
-            int d = x - labelFunc.Left;
-            labelFunc.Left += d;
-            labelFuncValue.Left += d;
+                // ALIGN STAFF //
+                labelFunc.Top = labelFuncValue.Bottom - labelFuncValue.Height / 2;
+                int w = panel1.Width;
+                int wl = labelFuncValue.Right - labelFunc.Left;
+                int x = (w - wl) / 2;
+                int d = x - labelFunc.Left;
+                labelFunc.Left += d;
+                labelFuncValue.Left += d;
+            
         }
 
         private void InitPanel2()

@@ -108,6 +108,7 @@ namespace LabworksProgramProduct
                 return;
             }
             int curPage = 1;
+
             fakePanel.VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
             fakePanel.VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
             fakePanel.VerticalScroll.Value = Pages[pageNum - 1].panel.Top;
@@ -160,17 +161,20 @@ namespace LabworksProgramProduct
         {
             var form = new StaticFormSelectType();
             form.Show();
+            
         }
         private void ButtonInterval_Click(object sender, EventArgs e)
         {
             var form = new IntervalFormSelectType();
             form.Show();
+            
         }
 
         private void ButtonGraphics_Click(object sender, EventArgs e)
         {
             var form = new GraphicsFormSelectType();
             form.Show();
+           
         }
         private void NextPageButton_Click(object sender, EventArgs e)
         {
@@ -181,6 +185,7 @@ namespace LabworksProgramProduct
         {
             var form = new AskingFormDataSource2("Числові характеристики");
             form.Show();
+            
         }
         private void HandleScroll()
         {

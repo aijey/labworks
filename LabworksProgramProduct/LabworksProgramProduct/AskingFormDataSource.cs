@@ -20,7 +20,7 @@ namespace LabworksProgramProduct
         public AskingFormDataSource(AskingForms Type, Forms nextForm)
         {
             NextForm = nextForm;
-            if (Type == AskingForms.VariantRowFromFile || Type == AskingForms.StatisticDistrFromFile)
+            if (Type == AskingForms.VariantRowFromFile || Type == AskingForms.StatisticDistrFromFile || Type == AskingForms.IntervalDistrFromFile)
             {
                 InitializeComponent();
                 openFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -28,23 +28,42 @@ namespace LabworksProgramProduct
                 openFileDialog1.Title = "Оберіть вхідний файл";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    var Dict = new SortedDictionary<double, double>();
-                    if (ReadFile(openFileDialog1.FileName, Type, out Dict)){
-                        if (nextForm == Forms.StaticTasksForm)
+                    if (Type == AskingForms.IntervalDistrFromFile)
+                    {
+                        var Dict = new SortedDictionary<Interval, double>();
+                        if (ReadIntervalFile(openFileDialog1.FileName, Type, out Dict))
                         {
-                            var form = new StaticTasksForm(Dict);
-                            form.Show();
-                        } else if (nextForm == Forms.GraphicsTasksForm)
+                            if (nextForm == Forms.IntervalTasksForm)
+                            {
+                                var form = new IntervalTasksForm(Dict);
+                                form.Show();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var Dict = new SortedDictionary<double, double>();
+                        if (ReadFile(openFileDialog1.FileName, Type, out Dict))
                         {
-                            var form = new GraphicsTasksForm(Dict);
-                            form.Show();
-                        } else if (nextForm == Forms.SelectNumberOfIntervalsForm)
-                        {
-                            var form = new SelectNumberOfIntervalsForm(Dict);
-                            form.Show();
-                        } else
-                        {
-                            throw new InvalidDataException();
+                            if (nextForm == Forms.StaticTasksForm)
+                            {
+                                var form = new StaticTasksForm(Dict);
+                                form.Show();
+                            }
+                            else if (nextForm == Forms.GraphicsTasksForm)
+                            {
+                                var form = new GraphicsTasksForm(Dict);
+                                form.Show();
+                            }
+                            else if (nextForm == Forms.SelectNumberOfIntervalsForm)
+                            {
+                                var form = new SelectNumberOfIntervalsForm(Dict);
+                                form.Show();
+                            }
+                            else
+                            {
+                                throw new InvalidDataException();
+                            }
                         }
                     }
                 }
@@ -86,7 +105,41 @@ namespace LabworksProgramProduct
             }
         }
 
-       
+        private static bool ReadIntervalFile(string fileName, AskingForms type, out SortedDictionary<Interval, double> dict)
+        {
+            dict = new SortedDictionary<Interval, double>();
+            using (var reader = new StreamReader(fileName))
+            {
+                int num = 0;
+                while (!reader.EndOfStream)
+                {
+                    num++;
+                    try
+                    {
+                        string line = reader.ReadLine();
+                        string[] words = line.Split(new char[1] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        Interval inter = new Interval();
+                        inter.IsIncludedLeftBound = words[0][0] == '[';
+                        inter.IsIncludedRightBound = words[1][words[1].Length - 1] == ']';
+                        inter.LeftBound = double.Parse(words[0].Substring(1, words[0].Length - 2), CultureInfo.InvariantCulture);
+                        inter.RightBound = double.Parse(words[1].Substring(0, words[1].Length - 1), CultureInfo.InvariantCulture);
+                        double Value = (double)int.Parse(words[2]);
+                        if (inter.LeftBound > inter.RightBound)
+                        {
+                            throw new IOException("L > R");
+                        }
+                        dict[inter] = Value;
+                    }
+                    catch
+                    {
+                        MessageBox.Show($"Не вдалося обробити вхідний файл. Помилка в зчитуванні {num} рядка", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             
@@ -151,9 +204,18 @@ namespace LabworksProgramProduct
                 this.Close();
             } else if (NextForm == Forms.GraphicsTasksForm)
             {
-                var form = new GraphicsTasksForm(Dict);
-                form.Show();
-                this.Close();
+                if (Type == AskingForms.IntervalDistr)
+                {
+                    var form = new GraphicsTasksForm(IntDict);
+                    form.Show();
+                    Close();
+                }
+                else
+                {
+                    var form = new GraphicsTasksForm(Dict);
+                    form.Show();
+                    this.Close();
+                }
             } else if (NextForm == Forms.SelectNumberOfIntervalsForm)
             {
                 var form = new SelectNumberOfIntervalsForm(Dict);
@@ -164,7 +226,8 @@ namespace LabworksProgramProduct
                 var form = new IntervalTasksForm(IntDict);
                 form.Show();
                 this.Close();
-            } else
+            } 
+            else
             {
                 throw new InvalidDataException();
             }

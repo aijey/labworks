@@ -42,5 +42,10 @@ namespace LabworksProgramProduct
             var form = new AskingFormDataSource(AskingForms.IntervalDistr, Forms.IntervalTasksForm);
             form.Show();
         }
+
+        private void ButtonIntervalFromFile_Click(object sender, EventArgs e)
+        {
+            var form = new AskingFormDataSource(AskingForms.IntervalDistrFromFile, Forms.IntervalTasksForm);
+        }
     }
 }

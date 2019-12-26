@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Globalization;
 
 namespace LabworksProgramProduct
 {
@@ -79,6 +81,45 @@ namespace LabworksProgramProduct
                 else
                 {
                     throw new NotImplementedException();
+                }
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            var dial = new SaveFileDialog();
+            if (dial.ShowDialog() == DialogResult.OK)
+            {
+                string path = dial.FileName;
+                using (var writer = new StreamWriter(path))
+                {
+                    foreach (var item in Dict)
+                    {
+                        string line = "";
+                        line += item.Key.ToString();
+                        line += ' ' + item.Value.ToString(CultureInfo.InvariantCulture);
+                        writer.WriteLine(line);
+                    }
+                }
+            }
+        }
+
+        private void ButtonSaveRelStatDistr_Click(object sender, EventArgs e)
+        {
+            var dial = new SaveFileDialog();
+            if (dial.ShowDialog() == DialogResult.OK)
+            {
+                string path = dial.FileName;
+                var dict = Tasks.GetIntervalRelStatDistr(Dict);
+                using (var writer = new StreamWriter(path))
+                {
+                    foreach (var item in dict)
+                    {
+                        string line = "";
+                        line += item.Key.ToString();
+                        line += ' ' + item.Value.ToString(CultureInfo.InvariantCulture);
+                        writer.WriteLine(line);
+                    }
                 }
             }
         }

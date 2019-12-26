@@ -33,7 +33,8 @@ namespace LabworksProgramProduct
 
         private void ButtonManualInterval_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var form = new AskingFormDataSource(AskingForms.IntervalDistr, Forms.GraphicsTasksForm);
+            form.Show();
         }
 
         private void ButtonStaticFromFile_Click(object sender, EventArgs e)
