@@ -40,11 +40,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(132, 25);
+            this.label1.Location = new System.Drawing.Point(130, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(496, 26);
+            this.label1.Size = new System.Drawing.Size(487, 26);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Введення значень ознаки, яку досліджуєте";
+            this.label1.Text = "Введіть значення ознаки, яку досліджуєте\r\n";
             // 
             // label2
             // 

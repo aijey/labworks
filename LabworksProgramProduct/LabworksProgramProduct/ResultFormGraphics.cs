@@ -97,6 +97,7 @@ namespace LabworksProgramProduct
                     chart1.Series[curSer].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                     chart1.Series[curSer].IsVisibleInLegend = false;
                     chart1.Series[curSer].Points.AddXY(prevKey, i.Value);
+                    chart1.Series[curSer].BorderWidth = 5;
                     chart1.Series[curSer++].Points.AddXY(i.Key, i.Value);
                     prevKey = i.Key;
                 }
@@ -111,6 +112,7 @@ namespace LabworksProgramProduct
                 chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                 chart1.Series[0].IsVisibleInLegend = false;
                 chart1.Series[0].IsValueShownAsLabel = true;
+                chart1.Series[0].BorderWidth = 5;
                 foreach (var item in toDraw)
                 {
                     chart1.Series[0].Points.AddXY(item.Key, item.Value);
