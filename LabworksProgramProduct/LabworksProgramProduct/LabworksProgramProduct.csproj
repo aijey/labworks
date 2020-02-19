@@ -173,6 +173,18 @@
     <Compile Include="LabForm.Designer.cs">
       <DependentUpon>LabForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NumCharSelectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumCharSelectType.Designer.cs">
+      <DependentUpon>NumCharSelectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumCharTasksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumCharTasksForm.Designer.cs">
+      <DependentUpon>NumCharTasksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OutputForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +211,12 @@
     </Compile>
     <Compile Include="ResultFormInterval.Designer.cs">
       <DependentUpon>ResultFormInterval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultFormNumChar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultFormNumChar.Designer.cs">
+      <DependentUpon>ResultFormNumChar.cs</DependentUpon>
     </Compile>
     <Compile Include="SelectNumberOfIntervalsForm.cs">
       <SubType>Form</SubType>
@@ -291,6 +309,12 @@
     <EmbeddedResource Include="LabForm.resx">
       <DependentUpon>LabForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NumCharSelectType.resx">
+      <DependentUpon>NumCharSelectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumCharTasksForm.resx">
+      <DependentUpon>NumCharTasksForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OutputForm.resx">
       <DependentUpon>OutputForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResultFormInterval.resx">
       <DependentUpon>ResultFormInterval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultFormNumChar.resx">
+      <DependentUpon>ResultFormNumChar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectNumberOfIntervalsForm.resx">
       <DependentUpon>SelectNumberOfIntervalsForm.cs</DependentUpon>

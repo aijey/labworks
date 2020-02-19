@@ -11,6 +11,7 @@ namespace LabworksProgramProduct
         StaticTasksForm,
         GraphicsTasksForm,
         SelectNumberOfIntervalsForm,
-        IntervalTasksForm
+        IntervalTasksForm,
+        NumCharTasksForm
     }
 }

@@ -60,6 +60,11 @@ namespace LabworksProgramProduct
                                 var form = new SelectNumberOfIntervalsForm(Dict);
                                 form.Show();
                             }
+                            else if (nextForm == Forms.NumCharTasksForm)
+                            {
+                                var form = new NumCharTasksForm(Dict);
+                                form.Show();
+                            }
                             else
                             {
                                 throw new InvalidDataException();
@@ -226,7 +231,12 @@ namespace LabworksProgramProduct
                 var form = new IntervalTasksForm(IntDict);
                 form.Show();
                 this.Close();
-            } 
+            } else if (NextForm == Forms.NumCharTasksForm)
+            {
+                var form = new NumCharTasksForm(Dict);
+                form.Show();
+                this.Close();
+            }
             else
             {
                 throw new InvalidDataException();

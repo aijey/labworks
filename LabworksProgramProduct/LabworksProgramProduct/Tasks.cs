@@ -248,6 +248,7 @@ namespace LabworksProgramProduct
             return Dict.Sum(x => x.Value * Math.Pow(x.Key, k)) / n;
         }
 
+
         public static double GetIntervalMed(SortedDictionary<Interval, double> Dict)
         {
             double Me = 0;
@@ -298,6 +299,36 @@ namespace LabworksProgramProduct
             double n = Dict.Sum(x => x.Value);
             double avg = Dict.Sum(x => (x.Key * x.Value)) / n;
             return Dict.Sum(x => x.Value * Math.Pow((x.Key - avg), k)) / n;
+        }
+        public static double GetAvg(ref SortedDictionary<double, double> Dict)
+        {
+            double n = Dict.Sum(x => x.Value);
+            double avg = Dict.Sum(x => (x.Key * x.Value)) / n;
+            return avg;
+        }
+        public static double GetDispersion(ref SortedDictionary<double, double> Dict)
+        {
+            double avg = GetAvg(ref Dict);
+            double n = Dict.Sum(x => x.Value);
+            return Dict.Sum(x => x.Value * Math.Pow((x.Key - avg), 2)) / n;
+
+        }
+
+        public static double GetSquareDeviation(ref SortedDictionary<double, double> Dict)
+        {
+            return Math.Sqrt(GetDispersion(ref Dict));
+        }
+
+        public static double GetCorrectedDispersion(ref SortedDictionary<double, double> Dict)
+        {
+            double avg = GetAvg(ref Dict);
+            double n = Dict.Sum(x => x.Value);
+            return Dict.Sum(x => x.Value * Math.Pow((x.Key - avg), 2)) / (n - 1);
+        }
+
+        public static double GetCorrectedSquareDeviation(ref SortedDictionary<double, double> Dict)
+        {
+            return Math.Sqrt(GetCorrectedDispersion(ref Dict));
         }
         public static SortedDictionary<Interval, double> GetIntDict(SortedDictionary<double, double> dict, int m)
         {

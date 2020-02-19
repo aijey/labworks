@@ -183,7 +183,7 @@ namespace LabworksProgramProduct
 
         private void ButtonNumChar_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormDataSource2("Числові характеристики");
+            var form = new NumCharSelectType();
             form.Show();
             
         }
