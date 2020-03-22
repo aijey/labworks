@@ -71,12 +71,24 @@
     <Compile Include="AskingFormDataSource2.Designer.cs">
       <DependentUpon>AskingFormDataSource2.cs</DependentUpon>
     </Compile>
+    <Compile Include="AskingFormPairs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AskingFormPairs.Designer.cs">
+      <DependentUpon>AskingFormPairs.cs</DependentUpon>
+    </Compile>
     <Compile Include="AskingForms.cs" />
     <Compile Include="ChartForm1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChartForm1.Designer.cs">
       <DependentUpon>ChartForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoefCorelTasksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoefCorelTasksForm.Designer.cs">
+      <DependentUpon>CoefCorelTasksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataGridForm1.cs">
       <SubType>Form</SubType>
@@ -120,6 +132,12 @@
     </Compile>
     <Compile Include="GraphicsTasksForm.Designer.cs">
       <DependentUpon>GraphicsTasksForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoefCorelSelectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoefCorelSelectType.Designer.cs">
+      <DependentUpon>CoefCorelSelectType.cs</DependentUpon>
     </Compile>
     <Compile Include="HistogramForm1.cs">
       <SubType>Form</SubType>
@@ -261,6 +279,9 @@
     <EmbeddedResource Include="AskingFormDataSource2.resx">
       <DependentUpon>AskingFormDataSource2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AskingFormPairs.resx">
+      <DependentUpon>AskingFormPairs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChartForm1.resx">
       <DependentUpon>ChartForm1.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GraphicsTasksForm.resx">
       <DependentUpon>GraphicsTasksForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoefCorelSelectType.resx">
+      <DependentUpon>CoefCorelSelectType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistogramForm1.resx">
       <DependentUpon>HistogramForm1.cs</DependentUpon>

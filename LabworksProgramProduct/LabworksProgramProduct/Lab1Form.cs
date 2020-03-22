@@ -187,6 +187,11 @@ namespace LabworksProgramProduct
             form.Show();
             
         }
+        private void ButtonGroupChar_Click(object sender, EventArgs e)
+        {
+            var form = new CoefCorelSelectType();
+            form.Show();
+        }
         private void HandleScroll()
         {
             //leftPanel.Location = new Point(0, 0);

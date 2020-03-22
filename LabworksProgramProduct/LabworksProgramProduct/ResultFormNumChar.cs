@@ -77,8 +77,13 @@ namespace LabworksProgramProduct
                     textBoxMediana.Text = modAndMed.Item2.ToString();
                 } else if (item == 6)
                 {
-                    // todo;
-                    MessageBox.Show("TODO");
+                    panel6.Show();
+                    panel6.Top = prevTop + 12;
+                    prevTop = panel6.Top + panel6.Height;
+                    double asymetry = Tasks.GetAsymmetry(Dict);
+                    double excess = Tasks.GetExcess(Dict);
+                    textBoxAsymmetry.Text = asymetry.ToString();
+                    textBoxExcess.Text = excess.ToString();
                 }
             }
         }

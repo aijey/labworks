@@ -366,5 +366,13 @@ namespace LabworksProgramProduct
             return intDict;
 
         }
+        public static double GetAsymmetry(SortedDictionary<double, double> dict)
+        {
+            return pEnd(dict, 3) / Math.Pow(GetSquareDeviation(ref dict), 3);
+        }
+        public static double GetExcess(SortedDictionary<double, double> dict)
+        {
+            return pEnd(dict, 4) / Math.Pow(GetSquareDeviation(ref dict), 4) - 4;
+        }
     }
 }

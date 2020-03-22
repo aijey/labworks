@@ -12,6 +12,7 @@ namespace LabworksProgramProduct
         GraphicsTasksForm,
         SelectNumberOfIntervalsForm,
         IntervalTasksForm,
-        NumCharTasksForm
+        NumCharTasksForm,
+        CoefCorelTasksForm
     }
 }

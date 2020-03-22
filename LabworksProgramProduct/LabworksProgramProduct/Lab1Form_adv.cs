@@ -388,7 +388,7 @@ namespace LabworksProgramProduct
             }
             if (index == 8)
             {
-                //leftPanelButtons[7].Click += ;
+                leftPanelButtons[7].Click += ButtonGroupChar_Click;
                 leftPanelButtons[7].Text = "Знаходження групових та загальних числових характеристик";
             }
             if (index == 9)

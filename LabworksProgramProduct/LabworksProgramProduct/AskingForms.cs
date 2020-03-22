@@ -8,6 +8,7 @@ namespace LabworksProgramProduct
 {
     public enum AskingForms
     {
-        VariantRow, StatisticDistr, VariantRowFromFile, StatisticDistrFromFile, IntervalDistr, IntervalDistrFromFile
+        VariantRow, StatisticDistr, VariantRowFromFile, StatisticDistrFromFile, IntervalDistr, IntervalDistrFromFile,
+        MatrixFromFile, Matrix, Pairs
     }
 }
