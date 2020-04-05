@@ -218,6 +218,12 @@
     <Compile Include="ResultForm.Designer.cs">
       <DependentUpon>ResultForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResultFormCoefCorel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultFormCoefCorel.Designer.cs">
+      <DependentUpon>ResultFormCoefCorel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResultFormGraphics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChartForm1.resx">
       <DependentUpon>ChartForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoefCorelTasksForm.resx">
+      <DependentUpon>CoefCorelTasksForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataGridForm1.resx">
       <DependentUpon>DataGridForm1.cs</DependentUpon>
@@ -354,6 +363,9 @@
     </Compile>
     <EmbeddedResource Include="ResultForm.resx">
       <DependentUpon>ResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultFormCoefCorel.resx">
+      <DependentUpon>ResultFormCoefCorel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResultFormGraphics.resx">
       <DependentUpon>ResultFormGraphics.cs</DependentUpon>
