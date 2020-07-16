@@ -79,9 +79,14 @@ namespace LabworksProgramProduct
                 fillDataGrid(ref dataGridView2, ref DictY, new string[] { "Yi", "Ni" });
             } else if (x == 3)
             {
+               
                 
             } else if (x == 4)
             {
+                double avgX = Tasks.GetAvg(ref DictX);
+                double avgY = Tasks.GetAvg(ref DictY);
+                textBoxAvgX.Text = avgX.ToString();
+                textBoxAvgY.Text = avgY.ToString();
 
             } else if (x == 5)
             {

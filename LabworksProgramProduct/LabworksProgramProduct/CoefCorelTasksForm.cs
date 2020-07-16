@@ -12,8 +12,10 @@ namespace LabworksProgramProduct
 {
     public partial class CoefCorelTasksForm : Form
     {
+        double[,] matrix;
         public CoefCorelTasksForm(double[, ] matrix)
         {
+            this.matrix = matrix;
             InitializeComponent();
         }
 
@@ -45,7 +47,8 @@ namespace LabworksProgramProduct
                 printErrToMessageBox("Виберіть хоча би одну опцію");
             } else
             {
-
+                var form = new ResultFormCoefCorel(TasksList, matrix);
+                form.Show();
             }
         }
         private void printErrToMessageBox(string Err)
