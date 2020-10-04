@@ -393,7 +393,7 @@ namespace LabworksProgramProduct
             }
             if (index == 9)
             {
-                //leftPanelButtons[8].Click += ;
+                leftPanelButtons[8].Click += ButtonCoefCorel_Click;
                 leftPanelButtons[8].Text = "Визначення коефіцієнту кореляції";
             }
             if (index == 10)

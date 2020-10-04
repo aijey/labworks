@@ -79,7 +79,8 @@ namespace LabworksProgramProduct
                 fillDataGrid(ref dataGridView2, ref DictY, new string[] { "Yi", "Ni" });
             } else if (x == 3)
             {
-               
+                double coefCorel = Tasks.GetCoefCorel(matrix, ref DictX, ref DictY);
+                textBoxCoefCorel.Text = coefCorel.ToString();
                 
             } else if (x == 4)
             {

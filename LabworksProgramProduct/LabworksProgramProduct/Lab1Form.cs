@@ -187,9 +187,14 @@ namespace LabworksProgramProduct
             form.Show();
             
         }
-        private void ButtonGroupChar_Click(object sender, EventArgs e)
+        private void ButtonCoefCorel_Click(object sender, EventArgs e)
         {
             var form = new CoefCorelSelectType();
+            form.Show();
+        }
+        private void ButtonGroupChar_Click(object sender, EventArgs e)
+        {
+            var form = new GroupCharSelectType();
             form.Show();
         }
         private void HandleScroll()

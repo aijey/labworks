@@ -78,6 +78,13 @@
       <DependentUpon>AskingFormPairs.cs</DependentUpon>
     </Compile>
     <Compile Include="AskingForms.cs" />
+    <Compile Include="BaseAskingFormGroupChar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseAskingFormGroupChar.Designer.cs">
+      <DependentUpon>BaseAskingFormGroupChar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseGroupInputElement.cs" />
     <Compile Include="ChartForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +145,20 @@
     </Compile>
     <Compile Include="CoefCorelSelectType.Designer.cs">
       <DependentUpon>CoefCorelSelectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GroupCharSelectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupCharSelectType.Designer.cs">
+      <DependentUpon>GroupCharSelectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GroupSequenceInputElement.cs" />
+    <Compile Include="GroupStatDistributionInputElement.cs" />
+    <Compile Include="GroupSequenceAskingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupSequenceAskingForm.Designer.cs">
+      <DependentUpon>GroupSequenceAskingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HistogramForm1.cs">
       <SubType>Form</SubType>
@@ -288,6 +309,9 @@
     <EmbeddedResource Include="AskingFormPairs.resx">
       <DependentUpon>AskingFormPairs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BaseAskingFormGroupChar.resx">
+      <DependentUpon>BaseAskingFormGroupChar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChartForm1.resx">
       <DependentUpon>ChartForm1.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CoefCorelSelectType.resx">
       <DependentUpon>CoefCorelSelectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupCharSelectType.resx">
+      <DependentUpon>GroupCharSelectType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistogramForm1.resx">
       <DependentUpon>HistogramForm1.cs</DependentUpon>

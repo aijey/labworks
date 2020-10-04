@@ -326,6 +326,31 @@ namespace LabworksProgramProduct
             return Dict.Sum(x => x.Value * Math.Pow((x.Key - avg), 2)) / (n - 1);
         }
 
+        public static double GetCoefCorel(double[,] matrix, ref SortedDictionary<double, double> dictX, ref SortedDictionary<double, double> dictY)
+        {
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
+            double sum = 0;
+            double sumN = 0;
+            for (int i = 1; i < n; i++)
+            {
+                for (int j = 1; j < m; j++)
+                {
+                    sum += matrix[i, 0] * matrix[0, j] * matrix[i, j];
+                    sumN += matrix[i, j];
+                }
+            }
+            
+            double avgX = Tasks.GetAvg(ref dictX);
+            double avgY = Tasks.GetAvg(ref dictY);
+            double devX = Tasks.GetSquareDeviation(ref dictX);
+            double devY = Tasks.GetSquareDeviation(ref dictY);
+            MessageBox.Show("sum: " + sum.ToString() + '\n' +
+                "sumN: " + sumN.ToString() + '\n' + 
+                "devX: " + devX + "\n" + "devY: " + devY);
+            return (sum - sumN * avgX * avgY) / (sumN * devX * devY);
+        }
+
         public static double GetCorrectedSquareDeviation(ref SortedDictionary<double, double> Dict)
         {
             return Math.Sqrt(GetCorrectedDispersion(ref Dict));
