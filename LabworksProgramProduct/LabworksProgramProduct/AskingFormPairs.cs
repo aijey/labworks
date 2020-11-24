@@ -20,10 +20,11 @@ namespace LabworksProgramProduct
         List<double> SortedXs;
         List<double> SortedYs;
         AskingForms Type;
+        Forms NextForm;
         public AskingFormPairs(AskingForms Type, Forms nextForm)
         {
             this.Type = Type;
-
+            NextForm = nextForm;
             if (Type == AskingForms.MatrixFromFile)
             {
                 InitializeComponent();
@@ -312,7 +313,14 @@ namespace LabworksProgramProduct
 
         private void showNextForm(double[,] matrix)
         {
-            var form = new CoefCorelTasksForm(matrix);
+            Form form;
+            if (NextForm == Forms.CoefCorelTasksForm)
+            {
+                form = new CoefCorelTasksForm(matrix);
+            } else
+            {
+                form = new RegressionLineForm(matrix);
+            }
             form.Show();
         }
 

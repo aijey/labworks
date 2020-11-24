@@ -189,7 +189,12 @@ namespace LabworksProgramProduct
         }
         private void ButtonCoefCorel_Click(object sender, EventArgs e)
         {
-            var form = new CoefCorelSelectType();
+            var form = new CoefCorelSelectType(Forms.CoefCorelTasksForm);
+            form.Show();
+        }
+        private void ButtonRegressionLine_Click(object sender, EventArgs e)
+        {
+            var form = new CoefCorelSelectType(Forms.RegressionLineForm);
             form.Show();
         }
         private void ButtonGroupChar_Click(object sender, EventArgs e)

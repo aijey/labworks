@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace LabworksProgramProduct
 {
-    public partial class BaseAskingFormGroupChar : Form
+    public abstract partial class BaseAskingFormGroupChar : Form
     {
         List<SortedDictionary<double, double>> distrs = new List<SortedDictionary<double, double>>();
         protected string defaultName = "";
@@ -22,14 +22,9 @@ namespace LabworksProgramProduct
             this.defaultName = defaultName;
             initArray();      
         }
-        protected virtual void initArray()
-        {
-            textBoxProto.Text = defaultName + "1";
-            textBoxProto.Focus();
-            textBoxProto.SelectAll();
-            var groupEl = new GroupStatDistributionInputElement(ref textBoxProto, ref dataGridProto);
-            groups.Add(groupEl);
-        }
+        protected abstract void initArray();
+        protected abstract DataGridView createNewDataGridView();
+        protected abstract void AddToGroups(ref TextBox textBox, ref DataGridView dataGrid);
         private TextBox createNewTextBox()
         {
             var newTextBox = new TextBox();
@@ -51,7 +46,7 @@ namespace LabworksProgramProduct
             for (var i = 0; i < groups.Count; i++)
             {
                 var group = groups[i];
-                var distr = group.GetDistribution(i);
+                var distr = group.GetDistribution(i + 1);
                 distrs.Add(distr);
             }   
         }
@@ -67,29 +62,9 @@ namespace LabworksProgramProduct
         {
             return dataGridProto;
         }
-        protected virtual DataGridView createNewDataGridView()
-        {
-            var newGrid = new DataGridView();
-            newGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            var colX = new DataGridViewTextBoxColumn();
-            var colN = new DataGridViewTextBoxColumn();
-            colX.Name = "X";
-            colX.HeaderText = "X";
-            colN.Name = "N";
-            colN.HeaderText = "N";
-            newGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {colX, colN});
-            newGrid.Location = new System.Drawing.Point(175, 78);
-            newGrid.Name = "newGrid";
-            newGrid.Size = new System.Drawing.Size(244, 375);
-            newGrid.TabIndex = 0;
-            newGrid.Parent = panel1;
-            return newGrid;
-        }
-        protected virtual void AddToGroups(ref TextBox textBox, ref DataGridView dataGrid)
-        {
-            var groupEl = new GroupStatDistributionInputElement(ref textBox, ref dataGrid);
-            groups.Add(groupEl);
-        }
+
+
+        
         protected void AddElement()
         {
             var newBox = createNewTextBox();
@@ -126,7 +101,15 @@ namespace LabworksProgramProduct
         }
         private void LaunchNextForm()
         {
-            //todo
+            var groupData = new List<GroupDistributionData>();
+            int num = 1;
+            foreach(var item in groups)
+            {
+                var newElement = new GroupDistributionData(item.textBox.Text, item.GetDistribution(num++));
+                groupData.Add(newElement);
+            }
+            var form = new GroupCharTasksForms(groupData);
+            form.Show();
         }
         private void ButtonAdd_Click(object sender, EventArgs e)
         {

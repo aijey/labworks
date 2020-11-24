@@ -398,7 +398,7 @@ namespace LabworksProgramProduct
             }
             if (index == 10)
             {
-                //leftPanelButtons[9].Click += ;
+                leftPanelButtons[9].Click += ButtonRegressionLine_Click;
                 leftPanelButtons[9].Text = "Побудова лінії регресії";
             }
         }

@@ -21,14 +21,15 @@ namespace LabworksProgramProduct
         private void ButtonSeq_Click(object sender, EventArgs e)
         {
             int flag = checkBox1.Checked ? 1 : 0;
-            var form = new BaseAskingFormGroupChar(defaultNames[flag]);
+            var form = new GroupSequenceAskingForm(defaultNames[flag]);
             form.Show();
+            
         }
 
         private void ButtonStatDistr_Click(object sender, EventArgs e)
         {
             int flag = checkBox1.Checked ? 1 : 0;
-            var form = new GroupSequenceAskingForm(defaultNames[flag]);
+            var form = new GroupStatDistrAskingForm(defaultNames[flag]);
             form.Show();
         }
     }

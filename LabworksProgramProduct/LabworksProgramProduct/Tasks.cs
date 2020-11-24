@@ -399,5 +399,109 @@ namespace LabworksProgramProduct
         {
             return pEnd(dict, 4) / Math.Pow(GetSquareDeviation(ref dict), 4) - 4;
         }
+        public static double GetGroupGeneralAvg(List<GroupDistributionData> groupData)
+        {
+            double up = 0;
+            double bot = 0;
+            for (int i = 0; i < groupData.Count; i++)
+            {
+                up += groupData[i].Distribution.Sum(x => (x.Key * x.Value));
+                bot += groupData[i].Distribution.Sum(x => (x.Value));
+            }
+            return up / bot;
+        }
+
+        public static double GetInGroupDispersion(List<GroupDistributionData> groupData)
+        {
+            double nTotal = groupData.Sum(x => (x.Distribution.Sum(y => y.Value)));
+            double up = 0;
+            for (int i = 0; i < groupData.Count; i++)
+            {
+                double disp = Tasks.GetDispersion(ref groupData[i].Distribution);
+                up += disp * (groupData[i].Distribution.Sum(x => x.Value));
+            }
+            return up / nTotal;
+        }
+        public static double GetInGroupCorrectedDispersion(List<GroupDistributionData> groupData)
+        {
+            double nTotal = groupData.Sum(x => (x.Distribution.Sum(y => y.Value)));
+            double up = 0;
+            for (int i = 0; i < groupData.Count; i++)
+            {
+                double disp = Tasks.GetDispersion(ref groupData[i].Distribution);
+                up += disp * (groupData[i].Distribution.Sum(x => x.Value));
+            }
+            return up / (nTotal - 1);
+        }
+
+        public static double GetBetweenGroupsDispersion(List<GroupDistributionData> groupData)
+        {
+            double nTotal = groupData.Sum(x => (x.Distribution.Sum(y => y.Value)));
+            double avg = GetGroupGeneralAvg(groupData);
+            double up = 0;
+            for (int i = 0; i < groupData.Count; i++)
+            {
+                double n = groupData[i].Distribution.Sum(x => x.Value);
+                double avgGroup = Tasks.GetAvg(ref groupData[i].Distribution);
+                up += n * Math.Pow(avgGroup - avg, 2);
+            }
+            return up / nTotal;
+        }
+
+        public static double GetBetweenGroupsCorrectedDispersion(List<GroupDistributionData> groupData)
+        {
+            double nTotal = groupData.Sum(x => (x.Distribution.Sum(y => y.Value)));
+            double avg = GetGroupGeneralAvg(groupData);
+            double up = 0;
+            for (int i = 0; i < groupData.Count; i++)
+            {
+                double n = groupData[i].Distribution.Sum(x => x.Value);
+                double avgGroup = Tasks.GetAvg(ref groupData[i].Distribution);
+                up += n * Math.Pow(avgGroup - avg, 2);
+            }
+            return up / (nTotal - 1);
+        }
+
+        public static double GetGroupGeneralDisp(List<GroupDistributionData> groupData)
+        {
+            return Tasks.GetInGroupDispersion(groupData) + Tasks.GetBetweenGroupsDispersion(groupData);
+        }
+
+        public static double GetGroupGeneralCorrectedDisp(List<GroupDistributionData> groupData)
+        {
+            return Tasks.GetInGroupCorrectedDispersion(groupData) + Tasks.GetBetweenGroupsCorrectedDispersion(groupData);
+        }
+
+        public static SortedDictionary<double, double> GetDictXFromMatrix(double[,] matrix)
+        {
+            SortedDictionary<double, double> Dict = new SortedDictionary<double, double>();
+            for (int i = 1; i < matrix.GetLength(0); i++)
+            {
+
+                Dict[matrix[i, 0]] = 0;
+                double key = matrix[i, 0];
+                for (int j = 1; j < matrix.GetLength(1); j++)
+                {
+                    double val = matrix[i, j];
+                    Dict[key] += val;
+                }
+            }
+            return Dict;
+        }
+        public static SortedDictionary<double, double> GetDictYFromMatrix(double[,] matrix)
+        {
+            SortedDictionary<double, double> Dict = new SortedDictionary<double, double>();
+            for (int j = 1; j < matrix.GetLength(1); j++)
+            {
+                double key = matrix[0, j];
+                Dict[key] = 0;
+                for (int i = 1; i < matrix.GetLength(0); i++)
+                {
+                    double val = matrix[i, j];
+                    Dict[key] += val;
+                }
+            }
+            return Dict;
+        }
     }
 }

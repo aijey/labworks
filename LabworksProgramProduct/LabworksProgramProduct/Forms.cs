@@ -13,6 +13,7 @@ namespace LabworksProgramProduct
         SelectNumberOfIntervalsForm,
         IntervalTasksForm,
         NumCharTasksForm,
-        CoefCorelTasksForm
+        CoefCorelTasksForm,
+        RegressionLineForm
     }
 }

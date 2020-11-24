@@ -146,13 +146,32 @@
     <Compile Include="CoefCorelSelectType.Designer.cs">
       <DependentUpon>CoefCorelSelectType.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupCharResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupCharResultForm.Designer.cs">
+      <DependentUpon>GroupCharResultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupCharSelectType.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GroupCharSelectType.Designer.cs">
       <DependentUpon>GroupCharSelectType.cs</DependentUpon>
     </Compile>
+    <Compile Include="GroupCharTasksForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupCharTasksForms.Designer.cs">
+      <DependentUpon>GroupCharTasksForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GroupDistributionData.cs" />
     <Compile Include="GroupSequenceInputElement.cs" />
+    <Compile Include="GroupStatDistrAskingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupStatDistrAskingForm.Designer.cs">
+      <DependentUpon>GroupStatDistrAskingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupStatDistributionInputElement.cs" />
     <Compile Include="GroupSequenceAskingForm.cs">
       <SubType>Form</SubType>
@@ -233,6 +252,12 @@
     <Compile Include="Page.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegressionLineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegressionLineForm.Designer.cs">
+      <DependentUpon>RegressionLineForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,8 +367,14 @@
     <EmbeddedResource Include="CoefCorelSelectType.resx">
       <DependentUpon>CoefCorelSelectType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GroupCharResultForm.resx">
+      <DependentUpon>GroupCharResultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GroupCharSelectType.resx">
       <DependentUpon>GroupCharSelectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupCharTasksForms.resx">
+      <DependentUpon>GroupCharTasksForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistogramForm1.resx">
       <DependentUpon>HistogramForm1.cs</DependentUpon>
@@ -388,6 +419,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegressionLineForm.resx">
+      <DependentUpon>RegressionLineForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResultForm.resx">
       <DependentUpon>ResultForm.cs</DependentUpon>
     </EmbeddedResource>

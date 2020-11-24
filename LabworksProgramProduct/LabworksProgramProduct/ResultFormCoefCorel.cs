@@ -35,42 +35,10 @@ namespace LabworksProgramProduct
                 dataGridView.Rows[1].Cells[ind++].Value = dict[key].ToString();
             }
         }
-
-        private SortedDictionary<double, double> getDictX()
-        {
-            SortedDictionary<double, double> Dict = new SortedDictionary<double, double>();
-            for (int i = 1; i < matrix.GetLength(0); i++)
-            {
-
-                Dict[matrix[i, 0]] = 0;
-                double key = matrix[i, 0];
-                for (int j = 1; j < matrix.GetLength(1); j++)
-                {
-                    double val = matrix[i, j];
-                    Dict[key] += val;
-                }
-            }
-            return Dict;
-        }
-        private SortedDictionary<double, double> getDictY()
-        {
-            SortedDictionary<double, double> Dict = new SortedDictionary<double, double>();
-            for (int j = 1; j < matrix.GetLength(1); j++)
-            {
-                double key = matrix[0, j];
-                Dict[key] = 0;
-                for (int i = 1; i < matrix.GetLength(0); i++)
-                {
-                    double val = matrix[i, j];
-                    Dict[key] += val;
-                }
-            }
-            return Dict;
-        }
         private void Solve(int x)
         {
-            var DictX = getDictX();
-            var DictY = getDictY();
+            var DictX = Tasks.GetDictXFromMatrix(matrix);
+            var DictY = Tasks.GetDictYFromMatrix(matrix);
             if (x == 1)
             {
                 fillDataGrid(ref dataGridView1, ref DictX, new string[2] { "Xi", "Ni" });

@@ -12,28 +12,30 @@ namespace LabworksProgramProduct
 {
     public partial class CoefCorelSelectType : Form
     {
-        public CoefCorelSelectType()
+        Forms NextForm;
+        public CoefCorelSelectType(Forms nextForm)
         {
+            NextForm = nextForm;
             InitializeComponent();
         }
 
         private void ButtonInputPairs_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormPairs(AskingForms.Pairs, Forms.CoefCorelTasksForm);
+            var form = new AskingFormPairs(AskingForms.Pairs, NextForm);
             form.Show();
             this.Close();
         }
 
         private void ButtonInputMatrix_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormPairs(AskingForms.Matrix, Forms.CoefCorelTasksForm);
+            var form = new AskingFormPairs(AskingForms.Matrix, NextForm);
             form.Show();
             this.Close();
         }
 
         private void ButtonInputMatrixFromFile_Click(object sender, EventArgs e)
         {
-            var form = new AskingFormPairs(AskingForms.MatrixFromFile, Forms.CoefCorelTasksForm);
+            var form = new AskingFormPairs(AskingForms.MatrixFromFile, NextForm);
             this.Close();
         }
     }
