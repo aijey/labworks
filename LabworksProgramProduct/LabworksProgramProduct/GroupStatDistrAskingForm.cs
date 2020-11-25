@@ -12,7 +12,7 @@ namespace LabworksProgramProduct
 {
     public partial class GroupStatDistrAskingForm : BaseAskingFormGroupChar
     {
-        public GroupStatDistrAskingForm(string defaulName) : base(defaulName) { }
+        public GroupStatDistrAskingForm(string defaulName, Forms nextForm) : base(defaulName, nextForm) { }
         protected override void initArray()
         {
             var textBoxProto = GetTextBoxProto();

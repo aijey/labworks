@@ -35,29 +35,53 @@ namespace LabworksProgramProduct
                 dataGridView.Rows[1].Cells[ind++].Value = dict[key].ToString();
             }
         }
+        private void fillMatrixDataGrid()
+        {
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
+            dataGridMatrix.RowCount = n;
+            dataGridMatrix.ColumnCount = m;
+            dataGridMatrix[0, 0].Value = "X\\Y";
+            dataGridMatrix.ColumnHeadersVisible = false;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (i == j && j == 0)
+                    {
+                        continue;
+                    }
+                    dataGridMatrix[j, i].Value = matrix[i, j];
+                }
+            }
+
+        }
         private void Solve(int x)
         {
             var DictX = Tasks.GetDictXFromMatrix(matrix);
             var DictY = Tasks.GetDictYFromMatrix(matrix);
             if (x == 1)
             {
-                fillDataGrid(ref dataGridView1, ref DictX, new string[2] { "Xi", "Ni" });
+                fillMatrixDataGrid();
             } else if (x == 2)
             {
-                fillDataGrid(ref dataGridView2, ref DictY, new string[] { "Yi", "Ni" });
+                fillDataGrid(ref dataGridView1, ref DictX, new string[2] { "Xi", "Ni" });
             } else if (x == 3)
+            {
+                fillDataGrid(ref dataGridView2, ref DictY, new string[] { "Yi", "Ni" });
+            } else if (x == 4)
             {
                 double coefCorel = Tasks.GetCoefCorel(matrix, ref DictX, ref DictY);
                 textBoxCoefCorel.Text = coefCorel.ToString();
                 
-            } else if (x == 4)
+            } else if (x == 5)
             {
                 double avgX = Tasks.GetAvg(ref DictX);
                 double avgY = Tasks.GetAvg(ref DictY);
                 textBoxAvgX.Text = avgX.ToString();
                 textBoxAvgY.Text = avgY.ToString();
 
-            } else if (x == 5)
+            } else if (x == 6)
             {
                 double Dx = Tasks.GetDispersion(ref DictX);
                 double Dy = Tasks.GetDispersion(ref DictY);
@@ -92,32 +116,38 @@ namespace LabworksProgramProduct
                     Solve(1);
                     prevTop += panel1.Height;
                     panel1.Show();
-
                 } else if (i == 2)
                 {
                     panel2.Top = prevTop;
                     Solve(2);
                     prevTop += panel2.Height;
                     panel2.Show();
+
                 } else if (i == 3)
                 {
-                    panel4.Top = prevTop;
-                    Solve(3);
-                    prevTop += panel4.Height;
-                    panel4.Show();
-                } else if (i == 4)
-                {
-                    panel5.Top = prevTop;
-                    Solve(4);
-                    prevTop += panel5.Height;
-                    panel5.Show();
-                } else if (i == 5)
-                {
                     panel3.Top = prevTop;
-                    Solve(5);
+                    Solve(3);
                     prevTop += panel3.Height;
                     panel3.Show();
-                } else
+                } else if (i == 4)
+                {
+                    panel4.Top = prevTop;
+                    Solve(4);
+                    prevTop += panel4.Height;
+                    panel4.Show();
+                } else if (i == 5)
+                {
+                    panel5.Top = prevTop;
+                    Solve(5);
+                    prevTop += panel5.Height;
+                    panel5.Show();
+                } else if (i == 6)
+                {
+                    panel6.Top = prevTop;
+                    Solve(6);
+                    prevTop += panel6.Height;
+                    panel6.Show();
+                } else 
                 {
                     throw new Exception("Invalid tasks at ResultFormCoefCorel. Task id: " + i);
                 }

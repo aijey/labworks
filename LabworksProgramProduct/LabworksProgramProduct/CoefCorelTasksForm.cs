@@ -42,6 +42,10 @@ namespace LabworksProgramProduct
             {
                 TasksList.Add(5);
             }
+            if (checkBox6.Checked)
+            {
+                TasksList.Add(6);
+            }
             if (TasksList.Count == 0)
             {
                 printErrToMessageBox("Виберіть хоча би одну опцію");

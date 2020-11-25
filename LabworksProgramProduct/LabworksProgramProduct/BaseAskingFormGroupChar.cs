@@ -10,15 +10,19 @@ using System.Windows.Forms;
 
 namespace LabworksProgramProduct
 {
-    public abstract partial class BaseAskingFormGroupChar : Form
+   
+    public abstract partial class BaseAskingFormGroupChar: Form
     {
         List<SortedDictionary<double, double>> distrs = new List<SortedDictionary<double, double>>();
         protected string defaultName = "";
         int offset = 50;
         protected List<BaseGroupInputElement> groups = new List<BaseGroupInputElement>();
-        public BaseAskingFormGroupChar(string defaultName)
+        Forms NextForm;
+        public BaseAskingFormGroupChar(string defaultName, Forms nextForm)
         {
             InitializeComponent();
+            NextForm = nextForm;
+            
             this.defaultName = defaultName;
             initArray();      
         }
@@ -96,7 +100,7 @@ namespace LabworksProgramProduct
             }
             else
             {
-                ShowError("Неможливо видалити групу. Мінімальна кількість груп - 1");
+                ShowError("Неможливо видалити групу (ознаку). Мінімальна кількість груп - 1");
             }
         }
         private void LaunchNextForm()
@@ -108,8 +112,19 @@ namespace LabworksProgramProduct
                 var newElement = new GroupDistributionData(item.textBox.Text, item.GetDistribution(num++));
                 groupData.Add(newElement);
             }
-            var form = new GroupCharTasksForms(groupData);
-            form.Show();
+            if (NextForm == Forms.GroupCharTasksForm)
+            {
+                var form = new GroupCharTasksForms(groupData);
+                form.Show();
+            } else if (NextForm == Forms.PropCharResultForm)
+            {
+                var form = new PropCharResultForm(groupData);
+                form.Show();
+            } else
+            {
+                throw new Exception("Invalid NextForm provided for BaseAskingFormGroupChar");
+            }
+            
         }
         private void ButtonAdd_Click(object sender, EventArgs e)
         {

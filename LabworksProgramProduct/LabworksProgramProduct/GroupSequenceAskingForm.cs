@@ -12,7 +12,7 @@ namespace LabworksProgramProduct
 {
     public partial class GroupSequenceAskingForm : BaseAskingFormGroupChar
     {
-        public GroupSequenceAskingForm(string defaultName): base(defaultName)
+        public GroupSequenceAskingForm(string defaultName, Forms nextForm): base(defaultName, nextForm)
         {
         }
         protected int XWidth = 0;

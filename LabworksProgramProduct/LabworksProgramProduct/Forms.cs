@@ -14,6 +14,9 @@ namespace LabworksProgramProduct
         IntervalTasksForm,
         NumCharTasksForm,
         CoefCorelTasksForm,
-        RegressionLineForm
+        RegressionLineForm,
+        GroupCharTasksForm,
+        PropCharTasksForm,
+        PropCharResultForm
     }
 }
